@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { spacing } from "../../helpers/themeHelpers";
 
-const StyledMotionDiv = styled(motion.div)`
+const StyledDiv = styled.div`
   position: fixed;
   top: 0;
+  left: -450px;
   width: 450px;
   max-width: 100%;
   max-height: 100vh;
@@ -15,25 +15,20 @@ const StyledMotionDiv = styled(motion.div)`
   background: white;
   box-shadow: ${({ theme }) => theme.boxShadows.light};
   z-index: 25;
+  transition: left 0.25s;
+
+  &.open {
+    left: 0;
+  }
 `;
 
-const variants = {
-  open: { x: 0 },
-  closed: { x: -450 },
+const SlideMenu = ({ isOpen, forwardRef, children }) => {
+  return (
+    <StyledDiv ref={forwardRef} className={isOpen ? "open" : "closed"}>
+      {children}
+    </StyledDiv>
+  );
 };
-
-const SlideMenu = ({ isOpen, forwardRef, children }) => (
-  <StyledMotionDiv
-    ref={forwardRef}
-    style={{ x: -400 }}
-    initial="closed"
-    animate={isOpen ? "open" : "closed"}
-    variants={variants}
-    transition={{ duration: 0.25 }}
-  >
-    {children}
-  </StyledMotionDiv>
-);
 
 SlideMenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,
