@@ -6,9 +6,6 @@
   "homepage": "https://github.com/Gatsbylius/Gatsbylius",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.2.0",
