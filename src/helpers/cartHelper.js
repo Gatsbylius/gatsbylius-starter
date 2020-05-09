@@ -1,6 +1,6 @@
 const localeMapping = {
   EUR: "€",
-  USD: "$",
+  USD: "$"
 };
 
 export const priceParser = (centsPrice, locale, hasSymbolBefore) => {

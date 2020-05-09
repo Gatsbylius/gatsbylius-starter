@@ -1,5 +1,5 @@
 //You can face an issue with checkout infos checkout this topic https://github.com/Sylius/ShopApiPlugin/issues/241
-const axios = require("axios");
+import axios from "axios";
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 export const submitCustomerInfo = async (storeState, formCustomerInfos) => {
@@ -15,7 +15,7 @@ export const submitCustomerInfo = async (storeState, formCustomerInfos) => {
           postcode: formCustomerInfos.postalCode,
           provinceName: "",
           company: "",
-          phoneNumber: formCustomerInfos.phone,
+          phoneNumber: formCustomerInfos.phone
         },
         billingAddress: {
           firstName: formCustomerInfos.firstName,
@@ -26,8 +26,8 @@ export const submitCustomerInfo = async (storeState, formCustomerInfos) => {
           postcode: formCustomerInfos.postalCode,
           provinceName: "",
           company: "",
-          phoneNumber: formCustomerInfos.phone,
-        },
+          phoneNumber: formCustomerInfos.phone
+        }
       })
       .catch(error => {
         console.error("Error on cart creation ", error);

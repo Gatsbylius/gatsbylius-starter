@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { checkoutReducer } from "../reducers/checkoutReducer";
+import { checkoutReducer } from "reducers/checkoutReducer";
 
 export const defaultCheckoutState =
   typeof window !== "undefined" && localStorage.getItem("checkoutState")
@@ -8,11 +8,11 @@ export const defaultCheckoutState =
     : {
         shippingInfos: {
           shipments: [],
-          selectedShippingMethod: "",
+          selectedShippingMethod: ""
         },
         paymentInfos: {
           payments: [],
-          selectedPaymentMethod: "",
+          selectedPaymentMethod: ""
         },
         currentTab: "CustomerInfoForm",
         orderSummary: {
@@ -23,7 +23,7 @@ export const defaultCheckoutState =
           cartDiscount: [],
           total: 0,
           currency: "USD",
-          currentShipment: {},
+          currentShipment: {}
         },
         customerInfos: {
           firstName: "",
@@ -32,8 +32,8 @@ export const defaultCheckoutState =
           country: "",
           city: "",
           postalCode: "",
-          phone: "",
-        },
+          phone: ""
+        }
       };
 
 export const CheckoutStateContext = React.createContext(defaultCheckoutState);
@@ -59,7 +59,7 @@ export const CheckoutProvider = ({ children }) => {
 };
 
 CheckoutProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export const useCheckoutStateContext = () => {

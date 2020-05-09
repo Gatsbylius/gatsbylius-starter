@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Container, Row, Col } from "styled-bootstrap-grid";
-import Layout from "../components/Layout";
-import ProductBreadcrumb from "../components/ProductBreadcrumb";
-import ProductSynthesis from "../components/ProductSynthesis";
-import styled from "styled-components";
-import { color, spacing } from "../helpers/themeHelpers";
 import Img from "gatsby-image";
-import RelatedProducts from "../components/Layout/RelatedProducts/RelatedProducts";
+import styled from "styled-components";
+import Layout from "components/Layout";
+import ProductBreadcrumb from "components/ProductBreadcrumb";
+import ProductSynthesis from "components/ProductSynthesis";
+import RelatedProducts from "components/Layout/RelatedProducts/RelatedProducts";
+import { color, spacing, mediaQuery } from "helpers/themeHelpers";
 
-const ProductPageContainer = styled(Container)`
+const ProductPageContainer = styled.div`
+  padding: 0 1rem;
   background-color: ${color("white")};
   border-right: 1px solid ${color("greyLight1")};
   border-left: 1px solid ${color("greyLight1")};
@@ -20,35 +20,42 @@ const ProductPageContent = styled.div`
   padding: ${spacing(["lg", "xs"])};
 `;
 
+const ProductContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  & > .gatsby-image-wrapper {
+    width: 100%;
+    padding: 0 1rem;
+
+    @media (min-width: ${mediaQuery("md")}) {
+      width: 60%;
+    }
+  }
+
+  & > section {
+    flex: 1;
+    padding: 0 1rem;
+  }
+`;
+
 const Product = ({ data }) => {
   return (
     <Layout>
       <ProductPageContainer>
         <ProductPageContent>
-          <Row>
-            <Col>
-              <ProductBreadcrumb product={data.product} />
-            </Col>
-          </Row>
+          <ProductBreadcrumb product={data.product} />
 
-          <Row>
-            <Col md={7}>
-              <Img fluid={data.product.localImage.childImageSharp.fluid} />
-            </Col>
+          <ProductContainer>
+            <Img fluid={data.product.localImage.childImageSharp.fluid} />
+            <ProductSynthesis product={data.product} />
+          </ProductContainer>
 
-            <Col md={5}>
-              <ProductSynthesis product={data.product} />
-            </Col>
-          </Row>
+          <section id="details" style={{ paddingTop: "4rem" }}>
+            <h5>Details</h5>
+            <p>{data.product.description}</p>
+          </section>
 
-          <Row>
-            <Col>
-              <div id="details" style={{ paddingTop: "4rem" }}>
-                <h5>Details</h5>
-                <p>{data.product.description}</p>
-              </div>
-            </Col>
-          </Row>
           <RelatedProducts data={data} />
         </ProductPageContent>
       </ProductPageContainer>
@@ -57,7 +64,7 @@ const Product = ({ data }) => {
 };
 
 Product.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default Product;

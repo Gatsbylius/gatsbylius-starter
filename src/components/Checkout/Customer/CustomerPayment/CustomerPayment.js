@@ -1,26 +1,31 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { Container, Col } from "styled-bootstrap-grid";
+import styled from "styled-components";
+import { RadioGroup, ReversedRadioButton } from "react-radio-buttons";
 import {
   BackButton,
   ButtonsContainer,
-  InputsRow,
   RadioText,
   Title,
-  ValidButton,
+  ValidButton
 } from "../styled";
-import { initPayment } from "../../../../services/checkout/initPayment";
+import { initPayment } from "services/checkout/initPayment";
 import {
   useStoreDispatchContext,
-  useStoreStateContext,
-} from "../../../../context/StoreContext";
+  useStoreStateContext
+} from "context/StoreContext";
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext,
-} from "../../../../context/CheckoutContext";
-import { RadioGroup, ReversedRadioButton } from "react-radio-buttons";
-import { submitCustomerPayment } from "../../../../services/checkout/submitCustomerPayment";
-import { submitCompleteCheckout } from "../../../../services/checkout/submitCompleteCheckout";
+  useCheckoutStateContext
+} from "context/CheckoutContext";
+import { submitCustomerPayment } from "services/checkout/submitCustomerPayment";
+import { submitCompleteCheckout } from "services/checkout/submitCompleteCheckout";
+
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+`;
 
 const CustomerPayment = () => {
   const storeState = useStoreStateContext();
@@ -49,63 +54,61 @@ const CustomerPayment = () => {
 
   return (
     <Container>
-      <InputsRow>
-        <Col>
-          <Title>Payment Method Selection</Title>
-          {paymentsMethods && paymentsMethods.methods ? (
-            <RadioGroup onChange={handleChange}>
-              {paymentsMethods.methods
-                ? Object.keys(paymentsMethods.methods).map(method => {
-                    return (
-                      <ReversedRadioButton
-                        value={paymentsMethods.methods[method].code}
-                        key={paymentsMethods.methods[method].code}
-                        iconSize={20}
-                      >
-                        <RadioText>
-                          {paymentsMethods.methods[method].name}
-                        </RadioText>
-                      </ReversedRadioButton>
+      <div>
+        <Title>Payment Method Selection</Title>
+        {paymentsMethods && paymentsMethods.methods ? (
+          <RadioGroup onChange={handleChange}>
+            {paymentsMethods.methods
+              ? Object.keys(paymentsMethods.methods).map(method => {
+                  return (
+                    <ReversedRadioButton
+                      value={paymentsMethods.methods[method].code}
+                      key={paymentsMethods.methods[method].code}
+                      iconSize={20}
+                    >
+                      <RadioText>
+                        {paymentsMethods.methods[method].name}
+                      </RadioText>
+                    </ReversedRadioButton>
+                  );
+                })
+              : ""}
+          </RadioGroup>
+        ) : (
+          ""
+        )}
+        <ButtonsContainer>
+          <BackButton
+            onClick={() => {
+              checkoutDispatch({
+                type: "updateCheckoutCurrentTab",
+                payload: "CustomerShipping"
+              });
+            }}
+          >
+            <span>
+              <FaArrowLeft />
+            </span>
+            Previous step
+          </BackButton>
+          <ValidButton
+            onClick={() => {
+              submitCustomerPayment(storeState, paymentCode).then(() => {
+                submitCompleteCheckout(storeState).then(() => {
+                  if (typeof window !== "undefined") {
+                    window.location.replace(
+                      `/order-confirmation?customerName=${checkoutState.customerInfos.firstName}`
                     );
-                  })
-                : ""}
-            </RadioGroup>
-          ) : (
-            ""
-          )}
-          <ButtonsContainer>
-            <BackButton
-              onClick={() => {
-                checkoutDispatch({
-                  type: "updateCheckoutCurrentTab",
-                  payload: "CustomerShipping",
+                  }
                 });
-              }}
-            >
-              <span>
-                <FaArrowLeft />
-              </span>
-              Previous step
-            </BackButton>
-            <ValidButton
-              onClick={() => {
-                submitCustomerPayment(storeState, paymentCode).then(() => {
-                  submitCompleteCheckout(storeState).then(() => {
-                    if (typeof window !== "undefined") {
-                      window.location.replace(
-                        `/order-confirmation?customerName=${checkoutState.customerInfos.firstName}`
-                      );
-                    }
-                  });
-                });
-              }}
-              type="submit"
-            >
-              Submit Order
-            </ValidButton>
-          </ButtonsContainer>
-        </Col>
-      </InputsRow>
+              });
+            }}
+            type="submit"
+          >
+            Submit Order
+          </ValidButton>
+        </ButtonsContainer>
+      </div>
     </Container>
   );
 };

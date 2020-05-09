@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 export const dropCart = async (storeState, storeDispatch) => {
@@ -9,7 +9,7 @@ export const dropCart = async (storeState, storeDispatch) => {
     .then(async () => {
       storeDispatch({
         type: "updateCartKey",
-        payload: null,
+        payload: null
       });
       storeDispatch({ type: "updateProducts", payload: [] });
       storeDispatch({ type: "updateStep", payload: "shopping" });

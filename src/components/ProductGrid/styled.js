@@ -1,6 +1,28 @@
 import styled from "styled-components";
 import { Link as GatsbyLink } from "gatsby";
-import { spacing, color } from "../../helpers/themeHelpers";
+import { spacing, color, mediaQuery } from "helpers/themeHelpers";
+
+export const GalleryList = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  & > div {
+    width: 100%;
+    padding: 1rem;
+
+    @media (min-width: ${mediaQuery("xs")}) {
+      width: 50%;
+    }
+    @media (min-width: ${mediaQuery("md")}) {
+      width: 33.33%;
+    }
+    @media (min-width: ${mediaQuery("lg")}) {
+      width: 25%;
+    }
+  }
+`;
 
 export const GalleryItem = styled.div`
   display: flex;

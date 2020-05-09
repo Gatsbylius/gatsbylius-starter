@@ -1,10 +1,10 @@
 import React from "react";
+import { navigate } from "gatsby";
 import {
   useStoreDispatchContext,
-  useStoreStateContext,
-} from "../../context/StoreContext";
-import { priceParser, getTotal } from "./../../helpers/cartHelper";
-import { navigate } from "gatsby";
+  useStoreStateContext
+} from "context/StoreContext";
+import { priceParser, getTotal } from "helpers/cartHelper";
 import {
   MiniCartHeader,
   MiniCartItem,
@@ -16,7 +16,7 @@ import {
   MiniCart as MinicartComponent,
   MiniCartImage,
   ButtonContainer,
-  CheckoutButton,
+  CheckoutButton
 } from "./styled";
 
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;

@@ -1,18 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
 import Img from "gatsby-image";
-import { Container, Row, Col } from "styled-bootstrap-grid";
+import styled from "styled-components";
+import Layout from "components/Layout";
 import {
   ChildCategoryLinks,
-  categoryGridTextStyle,
   CategoryTitle,
   CategoryImageContainer,
-  CategoryProductLink,
-  CategoryProductContainer,
-  selectedCategory,
-} from "../components/CategoryGrid/styled";
+  selectedCategory
+} from "components/CategoryGrid/styled";
+import {
+  GalleryList,
+  GalleryItem,
+  GalleryImageWrapper,
+  Infos,
+  Link
+} from "components/ProductGrid/styled";
+import Price from "components/Price";
+import { mediaQuery } from "helpers/themeHelpers";
+
+const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const CategoryList = styled.section`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  @media (min-width: ${mediaQuery("lg")}) {
+    width: 200px;
+  }
+`;
+
+const ProductsContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex: 1rem;
+  text-align: center;
+`;
 
 const Category = ({ data }) => {
   const category = data.category;
@@ -44,114 +73,117 @@ const Category = ({ data }) => {
         <Img
           sizes={{
             ...fluidCategoryImage,
-            aspectRatio: 8 / 2,
+            aspectRatio: 8 / 2
           }}
         />
         <CategoryTitle>{categoryName}</CategoryTitle>
       </CategoryImageContainer>
 
-      <Container css={categoryGridTextStyle} fluid>
-        <Row>
-          <Col lg={2}>
-            {subCategories && subCategories.length > 0 && (
-              <>
-                <h3>Our {categoryName}</h3>
+      <CategoryContainer>
+        {subCategories && subCategories.length > 0 && (
+          <CategoryList>
+            <h3>Our {categoryName}</h3>
 
-                <Col sm={12} key={baseCategoryCode}>
-                  <ChildCategoryLinks
-                    css={
-                      baseCategoryCode === category.code
-                        ? selectedCategory
-                        : null
-                    }
-                    to={`/categories/${baseCategoryCode}`}
-                  >
-                    All {categoryName}
-                  </ChildCategoryLinks>
-                </Col>
+            <ChildCategoryLinks
+              key={baseCategoryCode}
+              css={baseCategoryCode === category.code ? selectedCategory : null}
+              to={`/categories/${baseCategoryCode}`}
+            >
+              All {categoryName}
+            </ChildCategoryLinks>
 
-                {subCategories.map(subCategory => {
-                  return (
-                    <Col sm={12} key={subCategory.code}>
-                      <ChildCategoryLinks
-                        to={`/categories/${subCategory.code}`}
-                        css={
-                          subCategory.code === category.code
-                            ? selectedCategory
-                            : null
-                        }
-                      >
-                        {subCategory.name}
-                      </ChildCategoryLinks>
-                    </Col>
-                  );
-                })}
-              </>
-            )}
-          </Col>
-          <Col lg={10}>
-            {products && products.length > 0 && (
-              <Row>
-                <Col sm={12}>
-                  <h2>Products</h2>
-                </Col>
-                {products.map(product => {
-                  return (
-                    <CategoryProductContainer
-                      md={6}
-                      lg={4}
-                      xl={3}
-                      key={product.slug}
-                    >
-                      <CategoryProductLink to={`product/${product.slug}`}>
-                        <Img fluid={product.localImage.childImageSharp.fluid} />{" "}
-                        {product.name}
-                      </CategoryProductLink>
-                    </CategoryProductContainer>
-                  );
-                })}
-              </Row>
-            )}
+            {subCategories.map(subCategory => {
+              return (
+                <ChildCategoryLinks
+                  key={subCategory.code}
+                  to={`/categories/${subCategory.code}`}
+                  css={
+                    subCategory.code === category.code ? selectedCategory : null
+                  }
+                >
+                  {subCategory.name}
+                </ChildCategoryLinks>
+              );
+            })}
+          </CategoryList>
+        )}
+        {products && products.length > 0 && (
+          <ProductsContainer>
+            <h2>Products</h2>
+            <GalleryList>
+              {products.map(product => (
+                <GalleryItem key={product.slug}>
+                  <Link to={`/product/${product.slug}`}>
+                    <GalleryImageWrapper>
+                      <Img
+                        sizes={{
+                          ...product.localImage.childImageSharp.fluid
+                        }}
+                        style={{ maxHeight: "300px" }}
+                        imgStyle={{ objectFit: "contain" }}
+                      />
+                    </GalleryImageWrapper>
+                    <Infos>
+                      <strong>{product.name}</strong>
+                      <Price
+                        price={product.variants[0].price}
+                        fontSize="1.2rem"
+                        hasSymbolBefore
+                      />
+                    </Infos>
+                  </Link>
+                </GalleryItem>
+              ))}
+            </GalleryList>
+          </ProductsContainer>
+        )}
 
-            {!products.length > 0 && subCategories && subCategories.length > 0 && (
-              <Row>
-                <Col sm={12}>
-                  <h2>Products</h2>
-                </Col>
-                {subCategories.map(subCategory => {
-                  return (
-                    subCategory.products &&
-                    subCategory.products.length > 0 &&
-                    subCategory.products.map(product => {
-                      return (
-                        <CategoryProductContainer
-                          md={6}
-                          lg={4}
-                          xl={3}
-                          key={product.slug}
-                        >
-                          <CategoryProductLink to={`product/${product.slug}`}>
+        {!products.length > 0 && subCategories && subCategories.length > 0 && (
+          <ProductsContainer>
+            <h2>Products</h2>
+            <GalleryList>
+              {subCategories.map(subCategory => {
+                return (
+                  subCategory.products &&
+                  subCategory.products.length > 0 &&
+                  subCategory.products.map(product => {
+                    console.log({ product });
+                    return (
+                      <GalleryItem key={product.slug}>
+                        <Link to={`/product/${product.slug}`}>
+                          <GalleryImageWrapper>
                             <Img
-                              fluid={product.localImage.childImageSharp.fluid}
-                            />{" "}
-                            {product.name}
-                          </CategoryProductLink>
-                        </CategoryProductContainer>
-                      );
-                    })
-                  );
-                })}
-              </Row>
-            )}
-          </Col>
-        </Row>
-      </Container>
+                              sizes={{
+                                ...product.localImage.childImageSharp.fluid
+                              }}
+                              style={{ maxHeight: "300px" }}
+                              imgStyle={{ objectFit: "contain" }}
+                            />
+                          </GalleryImageWrapper>
+                          <Infos>
+                            <strong>{product.name}</strong>
+                            <Price
+                              price={product.variants[0].price}
+                              fontSize="1.2rem"
+                              hasSymbolBefore
+                            />
+                          </Infos>
+                        </Link>
+                      </GalleryItem>
+                    );
+                  })
+                );
+              })}
+            </GalleryList>
+          </ProductsContainer>
+        )}
+      </CategoryContainer>
     </Layout>
   );
 };
 
 Category.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default Category;
@@ -201,6 +233,12 @@ export const query = graphql`
             }
           }
         }
+        variants {
+          price {
+            currency
+            current
+          }
+        }
       }
       children {
         id
@@ -217,6 +255,12 @@ export const query = graphql`
                 fluid(maxWidth: 400, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
+              }
+            }
+            variants {
+              price {
+                currency
+                current
               }
             }
           }

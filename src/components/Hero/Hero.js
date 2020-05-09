@@ -4,7 +4,7 @@ import {
   StyledBackgroundImage,
   Overlay,
   HeroTitle,
-  HeroSubTitle,
+  HeroSubTitle
 } from "./styled";
 
 const Hero = () => {

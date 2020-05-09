@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { spacing } from "../../helpers/themeHelpers";
+import { spacing } from "helpers/themeHelpers";
 
 const StyledDiv = styled.div`
   position: fixed;
@@ -37,7 +37,7 @@ SlideMenu.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]), */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default SlideMenu;

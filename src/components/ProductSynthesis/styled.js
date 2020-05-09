@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, spacing } from "../../helpers/themeHelpers";
+import { color, spacing } from "helpers/themeHelpers";
 
 export const ProductTitle = styled.h1`
   margin-top: 0;

@@ -21,7 +21,7 @@ const IconButton = ({ icon: Icon, ...props }) => {
 };
 
 IconButton.propTypes = {
-  icon: PropTypes.func.isRequired,
+  icon: PropTypes.func.isRequired
 };
 
 export default IconButton;

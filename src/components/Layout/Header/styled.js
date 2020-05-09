@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { media } from "styled-bootstrap-grid";
-import { fontFamily, color, spacing } from "../../../helpers/themeHelpers";
+import { fontFamily, color, spacing, mediaQuery } from "helpers/themeHelpers";
 
 export const Header = styled.header`
   position: fixed;
@@ -41,18 +40,20 @@ export const Logo = styled(Link)`
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
-  ${media.md`
+
+  @media (min-width: ${mediaQuery("md")}) {
     flex-basis: 50%;
     font-size: 1.3rem;
     text-align: left;
-  `}
+  }
 `;
 
 export const Nav = styled.nav`
   flex-basis: 33%;
-  ${media.md`
+
+  @media (min-width: ${mediaQuery("md")}) {
     flex-basis: 50%;
-  `}
+  }
 `;
 
 export const NavList = styled.ul`

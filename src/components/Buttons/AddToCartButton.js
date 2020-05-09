@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { FiShoppingCart } from "react-icons/fi";
 import {
   useStoreDispatchContext,
-  useStoreStateContext,
-} from "../../context/StoreContext";
-import { addVariantToCart } from "./../../services/cart";
+  useStoreStateContext
+} from "context/StoreContext";
+import { addVariantToCart } from "services/cart";
 import { AddToCartButton as StyledAddToCartButton } from "./styled";
-import Loader from "../shared/Loader";
+import Loader from "components/shared/Loader";
 
 const AddToCartButton = ({ slug, variantsCode, qty, isSimple, name }) => {
   const storeState = useStoreStateContext();
@@ -43,7 +43,7 @@ AddToCartButton.propTypes = {
   variantsCode: PropTypes.string,
   qty: PropTypes.number,
   isSimple: PropTypes.bool,
-  name: PropTypes.string,
+  name: PropTypes.string
 };
 
 export default AddToCartButton;

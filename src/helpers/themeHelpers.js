@@ -8,6 +8,23 @@ export const spacing = sizes => ({ theme }) =>
     .map(size => `${theme.spaces[size]}${size === "none" ? "" : "rem"}`)
     .join(" ");
 
+export const mediaQuery = size => {
+  switch (size) {
+    case "lg": {
+      return "991px";
+    }
+    case "md": {
+      return "768px";
+    }
+    case "xs": {
+      return "576px";
+    }
+    default: {
+      return "576px";
+    }
+  }
+};
+
 export const toastrConfig = {
   closeButton: false,
   debug: false,
@@ -23,5 +40,5 @@ export const toastrConfig = {
   showEasing: "swing",
   hideEasing: "linear",
   showMethod: "fadeIn",
-  hideMethod: "fadeOut",
+  hideMethod: "fadeOut"
 };

@@ -9,7 +9,7 @@ export const cartReducer = (state, action) => {
         ...state,
         products: action.payload,
         success: true,
-        isAdding: false,
+        isAdding: false
       };
     }
     case "updateProductsError": {
@@ -17,13 +17,13 @@ export const cartReducer = (state, action) => {
         ...state,
         error: action.payload,
         success: false,
-        isAdding: false,
+        isAdding: false
       };
     }
     case "toggleMiniCart": {
       return {
         ...state,
-        miniCartIsOpen: !state.miniCartIsOpen,
+        miniCartIsOpen: !state.miniCartIsOpen
       };
     }
     case "updateCartKey": {

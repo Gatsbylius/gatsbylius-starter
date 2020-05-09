@@ -1,18 +1,18 @@
 import styled, { css } from "styled-components";
-import { media } from "styled-bootstrap-grid";
 import BackgroundImage from "gatsby-background-image";
-import { spacing, color } from "../../helpers/themeHelpers";
+import { spacing, color, mediaQuery } from "helpers/themeHelpers";
 
 export const StyledBackgroundImage = styled(BackgroundImage)`
   position: relative;
   width: 100%;
   height: 250px;
-  ${media.sm`
+  @media (min-width: ${mediaQuery("xs")}) {
     height: 300px;
-  `}
-  ${media.lg`
+  }
+
+  @media (min-width: ${mediaQuery("lg")}) {
     height: 550px;
-  `}
+  }
 `;
 
 export const Overlay = styled.div`
@@ -41,10 +41,11 @@ export const HeroTitle = styled.h1`
   font-size: 7vw;
   letter-spacing: 0.18em;
   margin-bottom: ${spacing(["sm"])};
-  ${media.lg`
+
+  @media (min-width: ${mediaQuery("lg")}) {
     margin-bottom: ${spacing(["md"])};
     font-size: 5.5vw;
-  `}
+  }
 `;
 
 export const HeroSubTitle = styled.p`
@@ -53,9 +54,10 @@ export const HeroSubTitle = styled.p`
   margin-top: 0;
   font-size: 4.5vw;
   letter-spacing: 0.15em;
-  ${media.lg`
+
+  @media (min-width: ${mediaQuery("lg")}) {
     font-size: 3.5vw;
-  `}
+  }
 
   &::before,
   &::after {

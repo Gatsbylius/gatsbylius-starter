@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { IoMdStarHalf, IoMdStarOutline, IoMdStar } from "react-icons/io";
 import scrollTo from "gatsby-plugin-smoothscroll";
-
-import Configurator from "../Configurator";
-import AddToCartButton from "../Buttons/AddToCartButton";
-import Price from "../Price";
-import QuantitySelect from "../QuantitySelect";
-import { ProductTitle, Sku, PricePanel, LearnMoreButton } from "./styled";
 import { graphql } from "gatsby";
+import Configurator from "components/Configurator";
+import AddToCartButton from "components/Buttons/AddToCartButton";
+import Price from "components/Price";
+import QuantitySelect from "components/QuantitySelect";
+import { ProductTitle, Sku, PricePanel, LearnMoreButton } from "./styled";
 
 const ProductSynthesis = ({ product }) => {
   const { name, shortDescription, code, variants } = product;
@@ -70,7 +69,7 @@ const ProductSynthesis = ({ product }) => {
 };
 
 ProductSynthesis.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.object.isRequired
 };
 
 export default ProductSynthesis;

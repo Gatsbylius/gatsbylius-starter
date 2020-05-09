@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../../helpers/themeHelpers";
+import { color } from "helpers/themeHelpers";
 
 const Button = styled.button`
   text-transform: uppercase;

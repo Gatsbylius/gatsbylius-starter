@@ -1,9 +1,9 @@
 import React from "react";
+import { FiShoppingCart } from "react-icons/fi";
 import {
   useStoreDispatchContext,
-  useStoreStateContext,
-} from "../../context/StoreContext";
-import { FiShoppingCart } from "react-icons/fi";
+  useStoreStateContext
+} from "context/StoreContext";
 import { CartButton, CartInfo } from "./styled";
 
 const MiniCartButton = () => {
