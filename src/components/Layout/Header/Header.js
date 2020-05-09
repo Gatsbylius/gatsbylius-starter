@@ -14,7 +14,7 @@ import {
   NavItem,
   NavLinkTouch,
   NavListTouch,
-  NavItemTouch,
+  NavItemTouch
 } from "./styled";
 import IconButton from "components/shared/IconButton";
 import SlideMenu from "components/SlideMenu";
@@ -28,6 +28,9 @@ const Header = ({ siteTitle = "", menuLinks }) => {
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
   useClickAway(ref, () => {
     if (isOpen) {
       toggleIsOpen();
@@ -122,7 +125,7 @@ const Header = ({ siteTitle = "", menuLinks }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  menuLinks: PropTypes.array.isRequired,
+  menuLinks: PropTypes.array.isRequired
 };
 
 export default Header;
