@@ -8,14 +8,14 @@ import {
   ChildCategoryLinks,
   CategoryTitle,
   CategoryImageContainer,
-  selectedCategory
+  selectedCategory,
 } from "components/CategoryGrid/styled";
 import {
   GalleryList,
   GalleryItem,
   GalleryImageWrapper,
   Infos,
-  Link
+  Link,
 } from "components/ProductGrid/styled";
 import Price from "components/Price";
 import { mediaQuery } from "helpers/themeHelpers";
@@ -73,7 +73,7 @@ const Category = ({ data }) => {
         <Img
           sizes={{
             ...fluidCategoryImage,
-            aspectRatio: 8 / 2
+            aspectRatio: 8 / 2,
           }}
         />
         <CategoryTitle>{categoryName}</CategoryTitle>
@@ -92,7 +92,7 @@ const Category = ({ data }) => {
               All {categoryName}
             </ChildCategoryLinks>
 
-            {subCategories.map(subCategory => {
+            {subCategories.map((subCategory) => {
               return (
                 <ChildCategoryLinks
                   key={subCategory.code}
@@ -111,13 +111,13 @@ const Category = ({ data }) => {
           <ProductsContainer>
             <h2>Products</h2>
             <GalleryList>
-              {products.map(product => (
+              {products.map((product) => (
                 <GalleryItem key={product.slug}>
                   <Link to={`/product/${product.slug}`}>
                     <GalleryImageWrapper>
                       <Img
                         sizes={{
-                          ...product.localImage.childImageSharp.fluid
+                          ...product.localImage.childImageSharp.fluid,
                         }}
                         style={{ maxHeight: "300px" }}
                         imgStyle={{ objectFit: "contain" }}
@@ -142,18 +142,18 @@ const Category = ({ data }) => {
           <ProductsContainer>
             <h2>Products</h2>
             <GalleryList>
-              {subCategories.map(subCategory => {
+              {subCategories.map((subCategory) => {
                 return (
                   subCategory.products &&
                   subCategory.products.length > 0 &&
-                  subCategory.products.map(product => {
+                  subCategory.products.map((product) => {
                     return (
                       <GalleryItem key={product.slug}>
                         <Link to={`/product/${product.slug}`}>
                           <GalleryImageWrapper>
                             <Img
                               sizes={{
-                                ...product.localImage.childImageSharp.fluid
+                                ...product.localImage.childImageSharp.fluid,
                               }}
                               style={{ maxHeight: "300px" }}
                               imgStyle={{ objectFit: "contain" }}
@@ -182,7 +182,7 @@ const Category = ({ data }) => {
 };
 
 Category.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default Category;
