@@ -147,7 +147,6 @@ const Category = ({ data }) => {
                   subCategory.products &&
                   subCategory.products.length > 0 &&
                   subCategory.products.map(product => {
-                    console.log({ product });
                     return (
                       <GalleryItem key={product.slug}>
                         <Link to={`/product/${product.slug}`}>
