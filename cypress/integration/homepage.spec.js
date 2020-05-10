@@ -12,7 +12,7 @@ describe("Homepage", () => {
   it("Click on a category should display category page", () => {
     cy.visit("/");
 
-    cy.get('[data-name="container-fluid"] > :last-child > :first-child')
+    cy.contains("Prints")
       .first()
       .click();
 
