@@ -1,4 +1,9 @@
 describe("Product", () => {
+  before(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
   it("Click on Add to cart shoud display an informative message & update cart quantity", () => {
     const cartQuantity = "header nav ul button:first-child";
 
