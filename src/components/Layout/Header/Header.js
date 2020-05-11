@@ -1,9 +1,8 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { IoIosMenu, IoMdClose } from "react-icons/io";
 import { FiUser } from "react-icons/fi";
 import { useMedia, useClickAway } from "react-use";
-import { useCycle } from "framer-motion";
 import {
   Header as StyledHeader,
   MenuButtonWrapper,
@@ -25,7 +24,9 @@ import MiniCartButton from "./../../MiniCart/MiniCartButton";
 const Header = ({ siteTitle = ``, menuLinks }) => {
   const isWide = useMedia("(min-width: 769px)");
   const ref = useRef(null);
-  const [isOpen, toggleIsOpen] = useCycle(false, true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleIsOpen = () => setIsOpen(!isOpen);
 
   useClickAway(ref, () => {
     if (isOpen) {
