@@ -24,7 +24,9 @@ import MiniCartButton from "./../../MiniCart/MiniCartButton";
 const Header = ({ siteTitle = ``, menuLinks }) => {
   const isWide = useMedia("(min-width: 769px)");
   const ref = useRef(null);
-  const [isOpen, toggleIsOpen] = useState(false, true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleIsOpen = () => setIsOpen(!isOpen);
 
   useClickAway(ref, () => {
     if (isOpen) {
