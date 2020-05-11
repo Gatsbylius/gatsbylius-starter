@@ -6,7 +6,7 @@ import { spacing } from "../../helpers/themeHelpers";
 const StyledDiv = styled.div`
   position: fixed;
   top: 0;
-  left: -450px;
+  transform: translateX(-450px);
   width: 450px;
   max-width: 100%;
   max-height: 100vh;
@@ -15,10 +15,10 @@ const StyledDiv = styled.div`
   background: white;
   box-shadow: ${({ theme }) => theme.boxShadows.light};
   z-index: 25;
-  transition: left 0.25s;
+  transition: transform 0.25s;
 
   &.open {
-    left: 0;
+    transform: translateX(0);
   }
 `;
 
