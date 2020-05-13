@@ -28,9 +28,6 @@ const Header = ({ siteTitle = "", menuLinks }) => {
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
-  const toggleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
   useClickAway(ref, () => {
     if (isOpen) {
       toggleIsOpen();
