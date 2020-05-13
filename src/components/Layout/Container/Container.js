@@ -5,6 +5,8 @@ import { spacing } from "helpers/themeHelpers";
 
 const StyledContainer = styled.div`
   padding: 0 ${spacing(["lg"])};
+  max-width: 1560px;
+  margin: auto;
 `;
 
 const Container = ({ children }) => {

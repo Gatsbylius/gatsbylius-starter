@@ -14,6 +14,8 @@ const ProductPageContainer = styled.div`
   background-color: ${color("white")};
   border-right: 1px solid ${color("greyLight1")};
   border-left: 1px solid ${color("greyLight1")};
+  max-width: 1140px;
+  margin: auto;
 `;
 
 const ProductPageContent = styled.div`
