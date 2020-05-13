@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { color, spacing } from "../../../helpers/themeHelpers";
+import { color, spacing } from "helpers/themeHelpers";
 
 const centerXY = css`
   display: flex;

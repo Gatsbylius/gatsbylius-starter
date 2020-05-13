@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 export const removeItemFromCart = async (itemId, storeState, storeDispatch) => {

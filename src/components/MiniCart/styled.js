@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { color, spacing } from "../../helpers/themeHelpers";
-import Button from "../shared/Button";
+import { color, spacing } from "helpers/themeHelpers";
+import Button from "components/shared/Button";
 
 export const MiniCartImage = styled.img`
   margin-top: 10px;

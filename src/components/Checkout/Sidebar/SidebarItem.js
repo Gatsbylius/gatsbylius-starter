@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import {
-  useStoreStateContext,
-  useStoreDispatchContext,
-} from "../../../context/StoreContext";
-import { priceParser } from "../../../helpers/cartHelper";
 import { FaChevronLeft, FaChevronRight, FaTimesCircle } from "react-icons/fa";
 import {
-  incrementQty,
-  decrementQty,
-  removeItemFromCart,
-} from "../../../services/cart";
+  useStoreStateContext,
+  useStoreDispatchContext
+} from "context/StoreContext";
+import { priceParser } from "helpers/cartHelper";
+import { incrementQty, decrementQty, removeItemFromCart } from "services/cart";
 import { Item } from "./styled";
 
 const SidebarItem = ({ item, isCartPage }) => {
@@ -82,7 +77,7 @@ const SidebarItem = ({ item, isCartPage }) => {
 
 SidebarItem.propTypes = {
   isCartPage: PropTypes.bool,
-  item: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired
 };
 
 export default SidebarItem;

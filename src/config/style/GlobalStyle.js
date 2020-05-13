@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { fontFamily, spacing, color } from "../../helpers/themeHelpers";
+import { fontFamily, spacing, color } from "helpers/themeHelpers";
 export const GlobalStyle = createGlobalStyle`
   /* Box sizing rules */
   *,

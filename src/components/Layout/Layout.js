@@ -2,14 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import Helmet from "react-helmet";
-import Header from "./Header";
-import Footer from "./Footer";
-import { GlobalStyle } from "../../config/style/GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import theme from "../../config/style/theme";
-import Hero from "../Hero";
-import Main from "./Main";
 import { GoMarkGithub } from "react-icons/go";
+import Header from "components/Layout/Header";
+import Footer from "components/Layout/Footer";
+import Main from "components/Layout/Main";
+import Container from "components/Layout/Container";
+import Hero from "components/Hero";
+import { GlobalStyle } from "config/style/GlobalStyle";
+import theme from "config/style/theme";
 
 const Layout = ({ children }) => {
   const isHomePage =
@@ -75,7 +76,7 @@ const Layout = ({ children }) => {
 
         <Main isHomePage={isHomePage}>
           {isHomePage && <Hero />}
-          {children}
+          <Container>{children}</Container>
         </Main>
 
         <Footer>
@@ -96,7 +97,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Layout;

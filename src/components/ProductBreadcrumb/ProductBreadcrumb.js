@@ -35,7 +35,7 @@ const ProductBreadcrumb = ({ product }) => {
 };
 
 ProductBreadcrumb.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.object.isRequired
 };
 
 export default ProductBreadcrumb;

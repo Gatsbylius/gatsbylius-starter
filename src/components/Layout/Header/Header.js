@@ -16,12 +16,12 @@ import {
   NavListTouch,
   NavItemTouch,
 } from "./styled";
-import IconButton from "../../shared/IconButton";
-import SlideMenu from "../../SlideMenu";
-import MiniCart from "./../../MiniCart/MiniCart";
-import MiniCartButton from "./../../MiniCart/MiniCartButton";
+import IconButton from "components/shared/IconButton";
+import SlideMenu from "components/SlideMenu";
+import MiniCart from "components/MiniCart/MiniCart";
+import MiniCartButton from "components/MiniCart/MiniCartButton";
 
-const Header = ({ siteTitle = ``, menuLinks }) => {
+const Header = ({ siteTitle = "", menuLinks }) => {
   const isWide = useMedia("(min-width: 769px)");
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ const Header = ({ siteTitle = ``, menuLinks }) => {
   });
 
   return (
-    <div>
+    <>
       <StyledHeader>
         {!isWide && (
           <MenuButtonWrapper>
@@ -116,7 +116,7 @@ const Header = ({ siteTitle = ``, menuLinks }) => {
       )}
 
       <MiniCart />
-    </div>
+    </>
   );
 };
 

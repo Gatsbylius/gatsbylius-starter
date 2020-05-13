@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { cartReducer } from "../reducers/cartReducer";
+import { cartReducer } from "reducers/cartReducer";
 
 export const defaultStoreState =
   typeof window !== "undefined" && localStorage.getItem("storeState")
@@ -14,7 +14,7 @@ export const defaultStoreState =
         error: null,
         products: [],
         cart: {},
-        step: "shopping",
+        step: "shopping"
       };
 
 export const StoreStateContext = createContext(defaultStoreState);
@@ -37,7 +37,7 @@ export const StoreProvider = ({ children }) => {
 };
 
 StoreProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export const useStoreStateContext = () => {

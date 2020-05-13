@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Img from "gatsby-image";
-import { color } from "./../../../helpers/themeHelpers";
+import { color } from "helpers/themeHelpers";
 
 export const RelatedProductsItemTitle = styled.p`
   margin: 1rem;

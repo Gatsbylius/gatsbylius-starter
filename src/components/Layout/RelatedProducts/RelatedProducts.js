@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
-import { Container, Row, Col } from "styled-bootstrap-grid";
-import { RelatedProductsItemTitle, RelatedProductsImage } from "./styled";
+import styled from "styled-components";
 import { Link } from "gatsby";
+import { RelatedProductsItemTitle, RelatedProductsImage } from "./styled";
 
 const settings = {
   dots: false,
@@ -18,55 +18,55 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true,
-      },
+        dots: true
+      }
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2,
-      },
+        initialSlide: 2
+      }
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
+        slidesToScroll: 1
+      }
+    }
+  ]
 };
+
+const RelatedProductsStyled = styled.section`
+  padding: 1rem;
+`;
 
 const RelatedProducts = ({ data }) => {
   return (
-    <Container>
-      <Row>
-        <Col sm={12}>
-          <h4>Similar Products</h4>
-          <Slider {...settings}>
-            {data.category.products
-              .filter(product => data.product.name !== product.name)
-              .map(product => {
-                return (
-                  <Link to={`/product/${product.slug}`} key={product.slug}>
-                    <RelatedProductsImage
-                      sizes={{
-                        ...product.localImage.childImageSharp.fluid,
-                        aspectRatio: 2 / 2,
-                      }}
-                    />
-                    <RelatedProductsItemTitle>
-                      {product.name}
-                    </RelatedProductsItemTitle>
-                  </Link>
-                );
-              })}
-          </Slider>
-        </Col>
-      </Row>
-    </Container>
+    <RelatedProductsStyled>
+      <h4>Similar Products</h4>
+      <Slider {...settings}>
+        {data.category.products
+          .filter(product => data.product.name !== product.name)
+          .map(product => {
+            return (
+              <Link to={`/product/${product.slug}`} key={product.slug}>
+                <RelatedProductsImage
+                  sizes={{
+                    ...product.localImage.childImageSharp.fluid,
+                    aspectRatio: 2 / 2
+                  }}
+                />
+                <RelatedProductsItemTitle>
+                  {product.name}
+                </RelatedProductsItemTitle>
+              </Link>
+            );
+          })}
+      </Slider>
+    </RelatedProductsStyled>
   );
 };
 

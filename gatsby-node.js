@@ -3,8 +3,8 @@ const path = require("path");
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
-    },
+      modules: [path.resolve(__dirname, "src"), "node_modules"]
+    }
   });
 };
 
@@ -48,8 +48,8 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/categories/${node.code}`,
         component: categoryTemplate,
         context: {
-          code: node.code,
-        },
+          code: node.code
+        }
       });
     });
     result.data.allProduct.nodes.forEach(node => {
@@ -58,8 +58,8 @@ exports.createPages = ({ graphql, actions }) => {
         component: productTemplate,
         context: {
           slug: node.slug,
-          mainProductTaxon: node.taxons.main,
-        },
+          mainProductTaxon: node.taxons.main
+        }
       });
     });
   });

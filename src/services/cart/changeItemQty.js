@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
@@ -19,7 +19,7 @@ const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
 
   await axios
     .put(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items/${item.id}`, {
-      quantity: newItemQty,
+      quantity: newItemQty
     })
     .then(response => {
       storeDispatch({ type: "updateProducts", payload: response.data.items });

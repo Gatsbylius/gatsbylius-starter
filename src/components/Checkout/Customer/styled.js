@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Row } from "styled-bootstrap-grid";
-import { color, spacing } from "../../../helpers/themeHelpers";
+import { color, spacing } from "helpers/themeHelpers";
 
 const styleButtonShared = `
   text-transform: uppercase;
@@ -22,7 +21,8 @@ export const Title = styled.h1`
   text-transform: capitalize;
 `;
 
-export const InputsRow = styled(Row)`
+export const InputsRow = styled.div`
+  display: flex;
   padding: ${spacing(["xs", "none"])};
   width: 100%;
 `;

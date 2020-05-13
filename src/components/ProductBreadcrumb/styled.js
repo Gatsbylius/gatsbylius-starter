@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { spacing, color } from "../../helpers/themeHelpers";
+import { spacing, color } from "helpers/themeHelpers";
 
 export const BreadcrumbList = styled.div`
   margin-bottom: ${spacing(["md"])};

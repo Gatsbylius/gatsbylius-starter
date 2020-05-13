@@ -23,7 +23,7 @@ const Loader = ({ size = "20px", color = "white" }) => {
 
 Loader.propTypes = {
   size: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.string
 };
 
 export default Loader;

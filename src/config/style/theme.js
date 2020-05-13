@@ -26,17 +26,17 @@ const palette = {
   greyMiddle2: "#646e74",
   greySemiDark: "#788995",
   greyMedium: "#898989",
-  greyDark: "#242428",
+  greyDark: "#242428"
 };
 
 export default {
   typography: {
     families: {
       titleFont: "Montserrat, sans-serif",
-      bodyFont: "Montserrat, sans-serif",
+      bodyFont: "Montserrat, sans-serif"
     },
     baseFontSize,
-    lineHeight,
+    lineHeight
   },
   spaces: {
     none: 0,
@@ -45,7 +45,7 @@ export default {
     sm: lineHeight,
     md: lineHeight * 1.5,
     lg: lineHeight * 2,
-    xl: lineHeight * 4,
+    xl: lineHeight * 4
   },
   colors: {
     text: palette.greyDark,
@@ -60,13 +60,13 @@ export default {
     info1: palette.softBlue,
     info2: palette.blue,
     success: palette.green,
-    ...palette,
+    ...palette
   },
   boxShadows: {
     light: "0 0 6px rgba(36, 36, 36, 0.2)",
-    medium: "0 0 10px rgba(36, 36, 36, 0.4)",
+    medium: "0 0 10px rgba(36, 36, 36, 0.4)"
   },
   textShadows: {
-    medium: "2px 2px 10px rgba(36, 36, 36, 0.6)",
-  },
+    medium: "2px 2px 10px rgba(36, 36, 36, 0.6)"
+  }
 };

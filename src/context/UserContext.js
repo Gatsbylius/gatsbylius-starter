@@ -5,7 +5,7 @@ export const defaultUserContext = {
   error: false,
   discount: false,
   profile: {},
-  handleLogout: () => {},
+  handleLogout: () => {}
 };
 
 export default React.createContext(defaultUserContext);

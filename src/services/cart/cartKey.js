@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 export const ensureCartKey = async (storeState, storeDispatch) => {
@@ -8,7 +8,7 @@ export const ensureCartKey = async (storeState, storeDispatch) => {
       .then(response => {
         storeDispatch({
           type: "updateCartKey",
-          payload: response.data.tokenValue,
+          payload: response.data.tokenValue
         });
         storeState.cartKey = response.data.tokenValue;
       })

@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
-
-import { color } from "../../helpers/themeHelpers";
+import { color } from "helpers/themeHelpers";
 import { Label } from "./styled";
 
 const customStyles = {
@@ -12,15 +11,15 @@ const customStyles = {
     borderRadius: "4px",
     padding: ".6rem",
     width: "100%",
-    transition: "all 200ms ease-in-out",
-  }),
+    transition: "all 200ms ease-in-out"
+  })
 };
 
 const InputSelect = ({ label, name, defaultValue, onChange }) => {
   const countryOption = [
     { value: "FR", label: "France" },
     { value: "UK", label: "Angleterre" },
-    { value: "ES", label: "Espagne" },
+    { value: "ES", label: "Espagne" }
   ];
   return (
     <div>
@@ -38,7 +37,7 @@ const InputSelect = ({ label, name, defaultValue, onChange }) => {
 
 InputSelect.propTypes = {
   label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default InputSelect;

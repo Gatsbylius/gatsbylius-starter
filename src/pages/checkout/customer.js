@@ -1,10 +1,9 @@
 import React from "react";
-import { Row, Col } from "styled-bootstrap-grid";
+import styled from "styled-components";
 import { Tabs, TabPanel } from "react-web-tabs";
-
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext,
+  useCheckoutStateContext
 } from "context/CheckoutContext";
 
 import Paper from "components/Paper";
@@ -14,6 +13,26 @@ import CustomerShipping from "components/Checkout/Customer/CustomerShipping";
 import CustomerPayment from "components/Checkout/Customer/CustomerPayment";
 import Sidebar from "components/Checkout/Sidebar";
 import { TabCustom, TabListWrapper } from "components/Checkout/Customer/Tab";
+import { mediaQuery } from "helpers/themeHelpers";
+
+const CheckoutContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+const CheckoutStep = styled.section`
+  width: 100%;
+  @media (min-width: ${mediaQuery("lg")}) {
+    width: 60%;
+  }
+`;
+
+const CheckoutRecap = styled.section`
+  width: 100%;
+
+  @media (min-width: ${mediaQuery("lg")}) {
+    width: 40%;
+  }
+`;
 
 const Customer = () => {
   const checkoutState = useCheckoutStateContext();
@@ -23,14 +42,14 @@ const Customer = () => {
   return (
     <Layout>
       <Paper fluid>
-        <Row>
-          <Col sm={8}>
+        <CheckoutContainer>
+          <CheckoutStep>
             <Tabs
               defaultTab={checkoutState.currentTab}
               onChange={tabId =>
                 checkoutDispatch({
                   type: "updateCheckoutCurrentTab",
-                  payload: tabId,
+                  payload: tabId
                 })
               }
             >
@@ -73,11 +92,11 @@ const Customer = () => {
                 }
               />
             </Tabs>
-          </Col>
-          <Col sm={4}>
+          </CheckoutStep>
+          <CheckoutRecap>
             <Sidebar />
-          </Col>
-        </Row>
+          </CheckoutRecap>
+        </CheckoutContainer>
       </Paper>
     </Layout>
   );

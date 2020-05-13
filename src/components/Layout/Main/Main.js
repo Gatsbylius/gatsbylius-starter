@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { spacing } from "../../../helpers/themeHelpers";
+import { spacing } from "helpers/themeHelpers";
 
 const StyledMain = styled.main`
   min-height: calc(100vh - (3 * ${spacing(["lg"])}));
@@ -13,7 +13,7 @@ const Main = ({ children }) => {
 };
 
 Main.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Main;

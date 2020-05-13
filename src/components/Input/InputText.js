@@ -13,7 +13,7 @@ const InputText = ({ label, name, onChange, value }) => {
 
 InputText.propTypes = {
   label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default InputText;

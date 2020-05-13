@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { OptionList, OptionItem, OptionLeft, OptionRadio } from "./styled";
 import { priceParser } from "helpers/cartHelper";
+import { OptionList, OptionItem, OptionLeft, OptionRadio } from "./styled";
 
 const Configurator = ({ variants, selectedVariant, onChange }) => {
   if (variants.length === 1) {
@@ -39,14 +39,14 @@ Configurator.propTypes = {
       code: PropTypes.string.isRequired,
       price: PropTypes.shape({
         current: PropTypes.number.isRequired,
-        currency: PropTypes.string.isRequired,
-      }).isRequired,
+        currency: PropTypes.string.isRequired
+      }).isRequired
     })
   ).isRequired,
   selectedVariant: PropTypes.shape({
-    code: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired
   }).isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default Configurator;

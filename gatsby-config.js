@@ -1,12 +1,12 @@
 require("dotenv").config({
-  path: ".env.local",
+  path: ".env.local"
 });
 module.exports = {
   pathPrefix: "/gatsbylius",
   siteMetadata: {
     title: `Gatsbylius`,
     description: `The fastest Open Source storefront for Sylius.`,
-    author: `@gatsbylius`,
+    author: `@gatsbylius`
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -16,8 +16,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: `gatsby-source-sylius`,
@@ -28,8 +28,8 @@ module.exports = {
             photographer: String
             unsplash_url: String
           }
-        `,
-      },
+        `
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -40,17 +40,17 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: `${__dirname}/src/images/gatsbylius-logo.jpg`, // This path is relative to the root of the site.
-      },
+        icon: `${__dirname}/src/images/gatsbylius-logo.jpg` // This path is relative to the root of the site.
+      }
     },
     {
       resolve: `gatsby-transformer-sharp`,
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        defaultQuality: 75,
-      },
+        defaultQuality: 75
+      }
     },
-    `gatsby-plugin-sharp`,
-  ],
+    `gatsby-plugin-sharp`
+  ]
 };
