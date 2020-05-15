@@ -19,19 +19,23 @@ jobs:
         uses: allenevans/set-env@v1.0.0
         with:
           GATSBY_SYLIUS_URL: ${{ secrets.SYLIUS_URL }}
-      - name: Cypress run
+      - name: cypress
         uses: cypress-io/github-action@v1
         with:
           build: npm run build --if-present
           start: npm start
           wait-on: http://localhost:8000
-      - name: npm install, build, and test
+      - name: npm install & build
         working-directory: ${{env.working-directory}}
         run: |
           npm ci
           npm run build --if-present
         env:
           CI: true
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.3.x
+          lhci autorun
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         uses: AEnterprise/rsync-deploy@v1.0
