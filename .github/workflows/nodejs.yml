@@ -1,9 +1,6 @@
 name: Node CI
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -22,10 +19,20 @@ jobs:
         uses: allenevans/set-env@v1.0.0
         with:
           GATSBY_SYLIUS_URL: ${{ secrets.SYLIUS_URL }}
-      - name: npm install, build, and test
-        working-directory: ${{env.working-directory}}
-        run: |
-          npm ci
-          npm run build --if-present
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          build: npm run build --if-present
+          start: npm start
+          wait-on: http://localhost:8000
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        uses: AEnterprise/rsync-deploy@v1.0
         env:
-          CI: true
+          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-e -c -r --delete"
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          FOLDER: "./public/"
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}

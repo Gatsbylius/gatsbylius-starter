@@ -17,16 +17,26 @@ const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
     return null;
   }
 
+  storeDispatch({
+    type: "updateProducts"
+  });
+
   await axios
     .put(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items/${item.id}`, {
       quantity: newItemQty
     })
     .then(response => {
-      storeDispatch({ type: "updateProducts", payload: response.data.items });
+      storeDispatch({
+        type: "updateProductsSuccess",
+        payload: response.data.items
+      });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
     .catch(error => {
-      console.error("Error on change qty item", error);
+      storeDispatch({
+        type: "updateProductsError",
+        payload: error.message
+      });
     });
 };
 
