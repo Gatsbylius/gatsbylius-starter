@@ -62,8 +62,8 @@
     "cy:run": "cypress run",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
+    "build-storybook": "NODE_ENV=production build-storybook"
   },
   "peerDependencies": {
     "gatsby": "^2.19.12"

@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import SlideMenu from "./SlideMenu";
 
-storiesOf("SlideMenu").add("Is open", () => (
+storiesOf("Components|SlideMenu").add("Is open", () => (
   <SlideMenu isOpen={true} toggleIsOpen={() => {}}>
     <ul>
       <li>
