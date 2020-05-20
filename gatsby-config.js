@@ -5,6 +5,7 @@ module.exports = {
   pathPrefix: "/gatsbylius",
   siteMetadata: {
     title: `Gatsbylius`,
+    subtitle: `Print Shop`,
     description: `The fastest Open Source storefront for Sylius.`,
     author: `@gatsbylius`
   },
