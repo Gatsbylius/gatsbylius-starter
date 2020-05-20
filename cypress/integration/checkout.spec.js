@@ -23,11 +23,17 @@ describe("Checkout", () => {
     cy.get("#react-select-2-option-0").click();
     cy.contains("Continue to shipping").click();
 
+    cy.wait(500);
+
     cy.contains("Chronopost").click();
     cy.contains("Continue to payment").click();
 
+    cy.wait(500);
+
     cy.contains("Cash on delivery").click();
     cy.contains("Submit Order").click();
+
+    cy.wait(500);
 
     cy.contains("FirstName, Thanks for your order !").should("be.visible");
   });

@@ -22,11 +22,11 @@ import {
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 const miniCartRef = React.createRef();
 
-const MiniCart = () => {
+const MiniCart = ({ open = false }) => {
   const storeState = useStoreStateContext();
   const storeDispatch = useStoreDispatchContext();
 
-  if (storeState.miniCartIsOpen) {
+  if (storeState.miniCartIsOpen || open) {
     if (
       typeof window !== "undefined" &&
       document.getElementsByTagName("main")[0] &&

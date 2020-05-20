@@ -58,16 +58,14 @@ const Header = ({ siteTitle = "", menuLinks }) => {
                       {node.name}
                     </NavLink>
                   </NavItem>
-                  {/* --------- Fixtures --------- */}
-                  <NavItem>
-                    <NavLink to="/">Frames</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink to="/">Contact</NavLink>
-                  </NavItem>
-                  {/* ---------------------------- */}
                 </Fragment>
               ))}
+            <NavItem>
+              <NavLink to="/">Frames</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/">Contact</NavLink>
+            </NavItem>
             <div>
               <MiniCartButton />
             </div>
@@ -98,19 +96,19 @@ const Header = ({ siteTitle = "", menuLinks }) => {
                     {node.name}
                   </NavLinkTouch>
                 </NavItemTouch>
-                {/* --------- Fixtures --------- */}
-                <NavItemTouch>
-                  <NavLinkTouch to="/">Frames</NavLinkTouch>
-                </NavItemTouch>
-                <NavItemTouch>
-                  <NavLinkTouch to="/">Contact</NavLinkTouch>
-                </NavItemTouch>
-                {/* ---------------------------- */}
-                <NavItemTouch>
-                  <NavLinkTouch to="/">My account</NavLinkTouch>
-                </NavItemTouch>
               </Fragment>
             ))}
+            {/* --------- Fixtures --------- */}
+            <NavItemTouch>
+              <NavLinkTouch to="/">Frames</NavLinkTouch>
+            </NavItemTouch>
+            <NavItemTouch>
+              <NavLinkTouch to="/">Contact</NavLinkTouch>
+            </NavItemTouch>
+            {/* ---------------------------- */}
+            <NavItemTouch>
+              <NavLinkTouch to="/">My account</NavLinkTouch>
+            </NavItemTouch>
           </NavListTouch>
         </SlideMenu>
       )}
