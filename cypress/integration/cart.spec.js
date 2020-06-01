@@ -17,7 +17,9 @@ describe("MiniCart", () => {
     cy.contains("Successfully added to cart").should("be.visible");
     cy.visit("/cart");
 
-    cy.contains("Car lights and stars").should("be.visible");
+    cy.get("span")
+      .contains("Car lights and stars")
+      .should("be.visible");
     cy.contains("10.99$").should("be.visible");
   });
 
@@ -34,8 +36,12 @@ describe("MiniCart", () => {
 
     cy.visit("/cart");
 
-    cy.contains("Car lights and stars").should("be.visible");
-    cy.contains("Moutain lake").should("be.visible");
+    cy.get("span")
+      .contains("Car lights and stars")
+      .should("be.visible");
+    cy.get("span")
+      .contains("Moutain lake")
+      .should("be.visible");
     cy.contains("21.98$").should("be.visible");
   });
 
@@ -68,8 +74,12 @@ describe("MiniCart", () => {
 
     cy.visit("/cart");
 
-    cy.contains("Car lights and stars").should("be.visible");
+    cy.get("span")
+      .contains("Car lights and stars")
+      .should("be.visible");
     cy.get(deleteIcon).click();
-    cy.contains("Car lights and stars").should("be.not.visible");
+
+    // Not fan of this selector
+    cy.get(".item-name-delete span").should("not.exist");
   });
 });

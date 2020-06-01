@@ -1,82 +1,61 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import Layout from "components/Layout";
-import Price from "components/Price";
-import {
-  GalleryList,
-  GalleryItem,
-  GalleryImageWrapper,
-  Infos,
-  Link
-} from "components/ProductGrid/styled";
-import SEO from "components/seo";
-import Loader from "components/shared/Loader";
-
-const pageTitle = "Gatsbylius Print Shop";
+import Layout from "components/layout";
+import Hero from "components/organisms/Hero";
+import Section from "components/molecules/Section";
+import CardItem from "components/molecules/CardItem";
+import ListItems from "components/atoms/ListItems";
+import Loader from "components/atoms/Loader";
+import Seo from "components/atoms/Seo";
 
 const IndexPage = ({ data }) => (
-  <Layout pageTitle={pageTitle}>
-    <SEO title={pageTitle} />
-    <h2 id="our-products" style={{ paddingTop: "4rem" }}>
-      Our latest products
-    </h2>
+  <Layout
+    pageTitle={`${data.site.siteMetadata.title} ${data.site.siteMetadata.subtitle}`}
+  >
+    <Seo
+      title={`${data.site.siteMetadata.title} ${data.site.siteMetadata.subtitle}`}
+    />
 
-    <Loader />
+    <Hero
+      fluidImage={data.hero.childImageSharp.fluid}
+      title={data.site.siteMetadata.title}
+      subtitle={data.site.siteMetadata.subtitle}
+    />
 
-    <GalleryList>
-      {[...data.allProduct.nodes].slice(0, 12).map(product => (
-        <GalleryItem key={product.slug}>
-          <Link to={`/product/${product.slug}`}>
-            <GalleryImageWrapper>
-              <Img
-                sizes={{
-                  ...product.localImage.childImageSharp.fluid
-                }}
-                style={{ maxHeight: "300px" }}
-                imgStyle={{ objectFit: "contain" }}
-              />
-            </GalleryImageWrapper>
-            <Infos>
-              <strong>{product.name}</strong>
-              <Price
-                price={product.variants[0].price}
-                fontSize="1.2rem"
-                hasSymbolBefore
-              />
-            </Infos>
-          </Link>
-        </GalleryItem>
-      ))}
-    </GalleryList>
+    <Section title="Our latest products">
+      <Loader />
+      <ListItems>
+        {[...data.allProduct.nodes].slice(0, 12).map(product => (
+          <CardItem
+            key={product.slug}
+            name={product.name}
+            price={product.variants[0].price}
+            to={`product/${product.slug}`}
+            imageFluid={product.localImage.childImageSharp.fluid}
+          />
+        ))}
+      </ListItems>
+    </Section>
 
-    <h2>Our categories</h2>
+    <Section title="Our categories">
+      <ListItems>
+        {data.allCategory.nodes.map(category => {
+          const fluidCategoryImage = category.localImage
+            ? category.localImage.childImageSharp.fluid
+            : data.file.childImageSharp.fluid;
 
-    <GalleryList>
-      {data.allCategory.nodes.map(category => {
-        const fluidCategoryImage = category.localImage
-          ? category.localImage.childImageSharp.fluid
-          : data.file.childImageSharp.fluid;
-
-        return (
-          <GalleryItem key={category.code}>
-            <GalleryImageWrapper>
-              <Link to={`/categories/${category.code}`}>
-                <Img
-                  sizes={{
-                    ...fluidCategoryImage,
-                    aspectRatio: 3 / 2
-                  }}
-                />
-
-                <Infos>{category.name}</Infos>
-              </Link>
-            </GalleryImageWrapper>
-          </GalleryItem>
-        );
-      })}
-    </GalleryList>
+          return (
+            <CardItem
+              key={category.code}
+              to={`/categories/${category.code}`}
+              name={category.name}
+              imageFluid={fluidCategoryImage}
+            />
+          );
+        })}
+      </ListItems>
+    </Section>
   </Layout>
 );
 
@@ -88,6 +67,19 @@ export default IndexPage;
 
 export const query = graphql`
   query HomePageQuery {
+    site {
+      siteMetadata {
+        title
+        subtitle
+      }
+    }
+    hero: file(name: { eq: "heroImage" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     file(name: { eq: "placeholder" }) {
       childImageSharp {
         fluid(maxWidth: 700) {

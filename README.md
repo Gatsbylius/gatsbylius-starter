@@ -65,7 +65,6 @@ The following steps are all you need if you already are familiar with the JavaSc
 
 1. `gatsby new gatsbylius-starter https://github.com/Gatsbylius/gatsbylius-starter`
 2. `cd gatsbylius-starter`
-3. `npm run start`
 
 ### Configuration
 
@@ -76,8 +75,15 @@ Create an `.env.local` file based on the `.env` files in the repository root and
 ```
 yarn start
 or
-npm start
+npm run start
 ```
+
+## Sylius
+
+To use Sylius as an API you have to :
+
+- Install [ShopApi official plugin](https://github.com/Sylius/ShopApiPlugin)
+- Fix an issue with checkout configuration : https://github.com/Sylius/ShopApiPlugin/issues/241#issuecomment-542240749
 
 ## Get help
 

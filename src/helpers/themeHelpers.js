@@ -10,6 +10,9 @@ export const spacing = sizes => ({ theme }) =>
 
 export const mediaQuery = size => {
   switch (size) {
+    case "xl": {
+      return "1214px";
+    }
     case "lg": {
       return "991px";
     }

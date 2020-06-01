@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "components/Checkout/Sidebar";
-import Layout from "components/Layout";
+import Sidebar from "components/organisms/Checkout/Sidebar";
+import Layout from "components/layout";
 
 const Cart = () => {
   return (

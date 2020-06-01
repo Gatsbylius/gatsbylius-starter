@@ -11,7 +11,7 @@ describe("MiniCart", () => {
     cy.get(cartQuantity)
       .first()
       .click();
-    cy.contains("Subtotal: 0$").should("be.visible");
+    cy.contains("Subtotal: $0").should("be.visible");
     cy.contains("Go to cart").should("be.visible");
   });
 
@@ -33,9 +33,9 @@ describe("MiniCart", () => {
       .first()
       .click();
 
-    cy.get("ul")
+    cy.get("ul li span")
       .contains("Car lights and stars")
       .should("be.visible");
-    cy.contains("Subtotal: 10.99$").should("be.visible");
+    cy.contains("Subtotal: $10.99").should("be.visible");
   });
 });

@@ -1,10 +1,10 @@
 import React from "react";
-import Paper from "components/Paper";
-import Layout from "components/Layout";
+import Paper from "components/layout/Paper";
+import Layout from "components/layout";
 import {
   ConfirmationTitle,
   ConfirmationText
-} from "components/OrderConfirmation/styled";
+} from "components/layout/OrderConfirmation/styled";
 import { resetState } from "context/helper";
 
 const OrderConfirmation = () => {
