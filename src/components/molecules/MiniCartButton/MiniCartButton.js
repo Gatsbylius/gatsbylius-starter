@@ -12,6 +12,7 @@ const MiniCartButton = () => {
   return (
     <CartButton
       key="cart"
+      aria-label={`${storeState.products.length} cart item`}
       onClick={() => {
         storeDispatch({ type: "toggleMiniCart" });
       }}

@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => (
     <Section title="Our latest products">
       <Loader />
       <ListItems>
-        {[...data.allProduct.nodes].slice(0, 12).map(product => (
+        {[...data.allProduct.nodes].slice(0, 8).map(product => (
           <CardItem
             key={product.slug}
             name={product.name}
@@ -76,14 +76,14 @@ export const query = graphql`
     hero: file(name: { eq: "heroImage" }) {
       childImageSharp {
         fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     file(name: { eq: "placeholder" }) {
       childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 334, maxHeight: 300) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -95,8 +95,8 @@ export const query = graphql`
         name
         localImage {
           childImageSharp {
-            fluid(maxWidth: 700) {
-              ...GatsbyImageSharpFluid
+            fluid(maxWidth: 334, maxHeight: 300) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -114,8 +114,8 @@ export const query = graphql`
         }
         localImage {
           childImageSharp {
-            fluid(maxHeight: 300) {
-              ...GatsbyImageSharpFluid
+            fluid(maxWidth: 334, maxHeight: 300) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

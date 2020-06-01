@@ -22,7 +22,7 @@ const SidebarItem = ({ item, isCartPage }) => {
               localImage {
                 childImageSharp {
                   fixed(height: 96, width: 96) {
-                    ...GatsbyImageSharpFixed
+                    ...GatsbyImageSharpFixed_withWebp
                   }
                 }
               }

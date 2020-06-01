@@ -40,7 +40,12 @@ const Header = ({ siteTitle = "", menuLinks }) => {
         {!isWide && (
           <MenuButtonWrapper>
             {!isOpen && (
-              <IconButton onClick={toggleIsOpen} icon={IoIosMenu} size={30} />
+              <IconButton
+                name="menu"
+                onClick={toggleIsOpen}
+                icon={IoIosMenu}
+                size={30}
+              />
             )}
           </MenuButtonWrapper>
         )}
@@ -60,21 +65,25 @@ const Header = ({ siteTitle = "", menuLinks }) => {
                   </NavItem>
                 </Fragment>
               ))}
-            <NavItem>
-              <NavLink to="/">Frames</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/">Contact</NavLink>
-            </NavItem>
-            <div>
-              <MiniCartButton />
-            </div>
             {isWide && (
-              <div>
-                <UserAccountButton>
+              <>
+                <NavItem>
+                  <NavLink to="/">Frames</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/">Contact</NavLink>
+                </NavItem>
+              </>
+            )}
+            <NavItem>
+              <MiniCartButton />
+            </NavItem>
+            {isWide && (
+              <NavItem>
+                <UserAccountButton aria-label="account">
                   <FiUser />
                 </UserAccountButton>
-              </div>
+              </NavItem>
             )}
           </NavList>
         </Nav>
