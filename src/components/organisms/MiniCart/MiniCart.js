@@ -30,7 +30,7 @@ const MiniCart = ({ open = false }) => {
               localImage {
                 childImageSharp {
                   fixed(height: 60, width: 60) {
-                    ...GatsbyImageSharpFixed
+                    ...GatsbyImageSharpFixed_withWebp
                   }
                 }
               }

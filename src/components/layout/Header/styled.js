@@ -10,16 +10,29 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   height: ${spacing(["lg"])};
-  padding: ${spacing(["none", "xs"])};
+  padding: ${spacing(["none"])};
   background-color: #fff;
   box-shadow: ${({ theme }) => theme.boxShadows.light};
   z-index: 20;
+
+  @media (min-width: ${mediaQuery("md")}) {
+    padding: ${spacing(["none", "xs"])};
+  }
 `;
 
 export const MenuButtonWrapper = styled.div`
   display: flex;
   flex-basis: 33%;
+  height: 100%;
   z-index: 30;
+
+  button {
+    display: flex;
+    height: 100%;
+    width: 3rem;
+    border-radius: 0;
+    padding: ${spacing(["none"])};
+  }
 `;
 
 export const UserAccountButton = styled.button`
@@ -35,7 +48,7 @@ export const UserAccountButton = styled.button`
 export const Logo = styled(Link)`
   flex-basis: 33%;
   font-size: 1rem;
-  color: ${color("primary")};
+  color: ${color("primaryDark")};
   ${fontFamily("titleFont")}
   font-weight: 600;
   text-align: center;

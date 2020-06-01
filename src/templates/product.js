@@ -38,7 +38,7 @@ export const query = graphql`
         localImage {
           childImageSharp {
             fluid(maxWidth: 400, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -57,7 +57,7 @@ export const query = graphql`
             # Specify the image processing specifications right in the query.
             # Makes it trivial to update as your page's design changes.
             fluid(maxWidth: 700) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

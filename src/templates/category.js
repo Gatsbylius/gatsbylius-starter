@@ -133,7 +133,7 @@ export const query = graphql`
           localImage {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -141,8 +141,8 @@ export const query = graphql`
       }
       localImage {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 334, maxHeight: 300, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -152,8 +152,8 @@ export const query = graphql`
         slug
         localImage {
           childImageSharp {
-            fluid(maxWidth: 400, quality: 100) {
-              ...GatsbyImageSharpFluid
+            fluid(maxWidth: 334, maxHeight: 300, quality: 100) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -176,8 +176,8 @@ export const query = graphql`
             slug
             localImage {
               childImageSharp {
-                fluid(maxWidth: 400, quality: 100) {
-                  ...GatsbyImageSharpFluid
+                fluid(maxWidth: 334, maxHeight: 300, quality: 100) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

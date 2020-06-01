@@ -8,7 +8,7 @@ const SlideMenu = ({ children, toggleIsOpen, isOpen = false }) => {
   return (
     <StyledMenu className={isOpen ? "open" : "closed"}>
       <MenuButtonWrapper>
-        <IconButton onClick={toggleIsOpen} icon={IoMdClose} />
+        <IconButton name="close" onClick={toggleIsOpen} icon={IoMdClose} />
       </MenuButtonWrapper>
       {children}
     </StyledMenu>

@@ -97,7 +97,7 @@ export const query = graphql`
     localImage {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
