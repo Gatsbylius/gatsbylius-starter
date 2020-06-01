@@ -33,7 +33,9 @@ describe("MiniCart", () => {
       .first()
       .click();
 
-    cy.get("ul li span")
+    // Not fan of this selector
+    // @TODO: refactor
+    cy.get("body > div > div > div ul li span")
       .contains("Car lights and stars")
       .should("be.visible");
     cy.contains("Subtotal: $10.99").should("be.visible");
