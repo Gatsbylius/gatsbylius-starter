@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { fontFamily, spacing, color } from "helpers/themeHelpers";
+import fonts from "./fonts";
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -8,9 +9,9 @@ export const GlobalStyle = createGlobalStyle`
     font-display: 'swap';
     font-weight: 300;
     src: local('Montserrat Light'), local('Montserrat-Light'),
-        url('./fonts/montserrat-v14-latin-300.woff2') format('woff2'),
-        url('./fonts/montserrat-v14-latin-300.woff') format('woff'),
-        url('./fonts/montserrat-v14-latin-300.ttf') format('truetype');
+        url(${fonts.MontserratWoff2}) format('woff2'),
+        url(${fonts.MontserratWoff}) format('woff'),
+        url(${fonts.MontserratTtf}) format('truetype');
   }
   @font-face {
     font-family: 'Montserrat';
@@ -18,9 +19,9 @@ export const GlobalStyle = createGlobalStyle`
     font-display: 'swap';
     font-weight: 300;
     src: local('Montserrat Light Italic'), local('Montserrat-LightItalic'),
-        url('./fonts/montserrat-v14-latin-300italic.woff2') format('woff2'),
-        url('./fonts/montserrat-v14-latin-300italic.woff') format('woff'),
-        url('./fonts/montserrat-v14-latin-300italic.ttf') format('truetype');
+        url(${fonts.MontserratItalicWoff2}) format('woff2'),
+        url(${fonts.MontserratItalicWoff}) format('woff'),
+        url(${fonts.MontserratItalicTtf}) format('truetype');
   }
   @font-face {
     font-family: 'Montserrat';
@@ -28,9 +29,9 @@ export const GlobalStyle = createGlobalStyle`
     font-display: 'swap';
     font-weight: 600;
     src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
-        url('./fonts/montserrat-v14-latin-600.woff2') format('woff2'),
-        url('./fonts/montserrat-v14-latin-600.woff') format('woff'),
-        url('./fonts/montserrat-v14-latin-600.ttf') format('truetype');
+        url(${fonts.MontserratBoldWoff2}) format('woff2'),
+        url(${fonts.MontserratBoldWoff}) format('woff'),
+        url(${fonts.MontserratBoldTtf}) format('truetype');
   }
 
   /* Box sizing rules */

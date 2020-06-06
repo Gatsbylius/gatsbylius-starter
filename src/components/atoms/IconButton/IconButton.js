@@ -21,6 +21,7 @@ const IconButton = ({
 IconButton.propTypes = {
   ...Button.propTypes,
   icon: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+  children: PropTypes.node,
   size: PropTypes.string,
 };
 
