@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { ThemeProvider } from "styled-components";
 import { GoMarkGithub } from "react-icons/go";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "components/layout/Header";
 import Footer from "components/layout/Footer";
 import Main from "components/layout/Main";
@@ -46,10 +48,6 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         />
         <link
-          href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-          rel="stylesheet"
-        />
-        <link
           rel="stylesheet"
           type="text/css"
           charset="UTF-8"
@@ -70,6 +68,18 @@ const Layout = ({ children }) => {
         />
 
         <Main>{children}</Main>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover
+        />
 
         <Footer>
           <div>© {new Date().getFullYear()}</div>

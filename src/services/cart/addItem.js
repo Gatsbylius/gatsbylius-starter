@@ -1,7 +1,7 @@
-import toastr from "toastr";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { ensureCartKey } from "./";
-import { toastrConfig } from "helpers/themeHelpers";
+import { toastConfig } from "helpers/themeHelpers";
 
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
@@ -35,10 +35,10 @@ export const addVariantToCart = async (
   await axios
     .post(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items`, productData)
     .then((response) => {
-      toastr.success(
+      toast.success(
         `Successfully added to cart`,
         `"${name}"` + successQtyString,
-        toastrConfig
+        toastConfig
       );
       storeDispatch({
         type: "updateProductsSuccess",
@@ -47,10 +47,10 @@ export const addVariantToCart = async (
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
     .catch((err) => {
-      toastr.error(
+      toast.error(
         `Was not added to cart, error.`,
         `"${name}"` + successQtyString,
-        toastrConfig
+        toastConfig
       );
       storeDispatch({
         type: "updateProductsError",

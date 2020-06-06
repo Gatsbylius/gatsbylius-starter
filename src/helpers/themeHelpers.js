@@ -28,20 +28,12 @@ export const mediaQuery = (size) => {
   }
 };
 
-export const toastrConfig = {
-  closeButton: false,
-  debug: false,
-  newestOnTop: false,
-  progressBar: true,
-  positionClass: "toast-bottom-right",
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: "100",
-  hideDuration: "1000",
-  timeOut: "2000",
-  extendedTimeOut: "1000",
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut",
+export const toastConfig = {
+  position: "bottom-right",
+  autoClose: 1500,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: false,
+  progress: undefined,
 };
