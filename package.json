@@ -27,12 +27,13 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.10.0",
+    "react-is": "^16.13.1",
     "react-radio-buttons": "^1.2.2",
     "react-select": "^3.0.8",
     "react-slick": "^0.25.2",
     "react-use": "^13.21.0",
     "react-web-tabs": "^1.0.1",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.1.1",
     "toastr": "^2.1.4"
   },
   "devDependencies": {
