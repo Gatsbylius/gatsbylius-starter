@@ -20,7 +20,7 @@ Gatsby + Sylius = :rocket:,
 ![GitHub last commit](https://img.shields.io/github/last-commit/Gatsbylius/gatsbylius-starter.svg?style=flat-square)
 [![Questions welcome](https://img.shields.io/badge/questions-welcome-blue.svg?style=flat-square)](https://github.com/Gatsbylius/gatsbylius-starter/issues)
 ![license](https://img.shields.io/github/license/Gatsbylius/gatsbylius-starter.svg?style=flat-square)
-[![Twitter Follow](https://img.shields.io/twitter/follow/gatsbylius.svg?style=social&label=Follow)](https://twitter.com/gatsbylius)
+![Node CI](https://github.com/Gatsbylius/gatsbylius-starter/workflows/Node%20CI/badge.svg)
 
   </p>
 
