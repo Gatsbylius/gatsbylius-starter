@@ -37,7 +37,7 @@ export const query = graphql`
         slug
         localImage {
           childImageSharp {
-            fluid(maxWidth: 400, quality: 100) {
+            fluid(maxWidth: 227, maxHeight: 227, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -46,22 +46,6 @@ export const query = graphql`
     }
     product(slug: { eq: $slug }) {
       ...ProductSynthesis
-    }
-
-    allProduct {
-      nodes {
-        name
-        slug
-        localImage {
-          childImageSharp {
-            # Specify the image processing specifications right in the query.
-            # Makes it trivial to update as your page's design changes.
-            fluid(maxWidth: 700) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-      }
     }
   }
 `;
