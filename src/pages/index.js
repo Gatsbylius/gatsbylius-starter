@@ -75,14 +75,14 @@ export const query = graphql`
     }
     hero: file(name: { eq: "heroImage" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
+        fluid(maxWidth: 1500, maxHeight: 550, quality: 50) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     file(name: { eq: "placeholder" }) {
       childImageSharp {
-        fluid(maxWidth: 334, maxHeight: 300) {
+        fluid(maxHeight: 250, quality: 50) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -95,7 +95,7 @@ export const query = graphql`
         name
         localImage {
           childImageSharp {
-            fluid(maxWidth: 334, maxHeight: 300) {
+            fluid(maxHeight: 250, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -114,7 +114,7 @@ export const query = graphql`
         }
         localImage {
           childImageSharp {
-            fluid(maxWidth: 334, maxHeight: 300) {
+            fluid(maxHeight: 250, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

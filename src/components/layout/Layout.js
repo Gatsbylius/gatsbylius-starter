@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import { ThemeProvider } from "styled-components";
 import { GoMarkGithub } from "react-icons/go";
 import { ToastContainer } from "react-toastify";
@@ -41,60 +40,40 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <>
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,600&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charset="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-      </Helmet>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header
+        menuLinks={data.allCategory.edges}
+        siteTitle={data.site.siteMetadata.title}
+      />
 
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header
-          menuLinks={data.allCategory.edges}
-          siteTitle={data.site.siteMetadata.title}
-        />
+      <Main>{children}</Main>
 
-        <Main>{children}</Main>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+      />
 
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable={false}
-          pauseOnHover
-        />
-
-        <Footer>
-          <div>© {new Date().getFullYear()}</div>
-          <div>
-            Follow
-            <a href="https://github.com/gatsbylius/gatsbylius">
-              <span>Gatsbylius on Github</span>
-              <span>
-                <GoMarkGithub size={24} />
-              </span>
-            </a>
-          </div>
-        </Footer>
-      </ThemeProvider>
-    </>
+      <Footer>
+        <div>© {new Date().getFullYear()}</div>
+        <div>
+          Follow
+          <a href="https://github.com/gatsbylius/gatsbylius">
+            <span>Gatsbylius on Github</span>
+            <span>
+              <GoMarkGithub size={24} />
+            </span>
+          </a>
+        </div>
+      </Footer>
+    </ThemeProvider>
   );
 };
 
