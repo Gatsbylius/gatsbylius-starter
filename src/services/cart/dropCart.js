@@ -9,12 +9,12 @@ export const dropCart = async (storeState, storeDispatch) => {
     .then(async () => {
       storeDispatch({
         type: "updateCartKey",
-        payload: null
+        payload: null,
       });
       storeDispatch({ type: "updateProducts", payload: [] });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error on drop cart items", error);
     });
 };

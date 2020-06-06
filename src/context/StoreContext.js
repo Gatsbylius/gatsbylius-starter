@@ -14,7 +14,7 @@ export const defaultStoreState =
         error: null,
         products: [],
         cart: {},
-        step: "shopping"
+        step: "shopping",
       };
 
 export const StoreStateContext = createContext(defaultStoreState);
@@ -37,7 +37,7 @@ export const StoreProvider = ({ children }) => {
 };
 
 StoreProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const useStoreStateContext = () => {

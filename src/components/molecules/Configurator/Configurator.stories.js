@@ -8,24 +8,24 @@ const variants = [
     code: "code",
     price: {
       current: 1501,
-      currency: "USD"
+      currency: "USD",
     },
-    axis: ["2cm", "red"]
+    axis: ["2cm", "red"],
   },
   {
     code: "code2",
     price: {
       current: 1750,
-      currency: "USD"
+      currency: "USD",
     },
-    axis: ["3cm", "red"]
-  }
+    axis: ["3cm", "red"],
+  },
 ];
 
 storiesOf("Molecules|Configurator").add("Default", () => (
   <Configurator
     variants={variants}
     selectedVariant={variants[0]}
-    onChange={e => action("onChange")(e)}
+    onChange={(e) => action("onChange")(e)}
   />
 ));

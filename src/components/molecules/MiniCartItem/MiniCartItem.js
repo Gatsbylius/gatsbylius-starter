@@ -6,7 +6,7 @@ import {
   MiniCartInfos,
   MiniCartItemName,
   MiniCartItemQty,
-  MiniCartImage
+  MiniCartImage,
 } from "./styled";
 
 const MiniCartItem = ({ fixedImage, name, quantity, price }) => {
@@ -28,7 +28,7 @@ MiniCartItem.propTypes = {
   fixedImage: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
-  price: Price.propTypes.price.isRequired
+  price: Price.propTypes.price.isRequired,
 };
 
 export default MiniCartItem;

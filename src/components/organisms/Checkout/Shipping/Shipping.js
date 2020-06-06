@@ -7,12 +7,12 @@ import Button from "components/atoms/Button";
 import IconButton from "components/atoms/IconButton";
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext
+  useCheckoutStateContext,
 } from "context/CheckoutContext";
 import { initShipping } from "services/checkout/initShipping";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import { priceParser } from "helpers/cartHelper";
 import { submitCustomerShipping } from "services/checkout/submitCustomerShipping";
@@ -44,12 +44,12 @@ const Shipping = () => {
       {shipmentsMethods && shipmentsMethods.methods ? (
         <RadioGroup
           onChange={setShipmentCode}
-          options={Object.keys(shipmentsMethods.methods).map(method => ({
+          options={Object.keys(shipmentsMethods.methods).map((method) => ({
             value: shipmentsMethods.methods[method].code,
             label: `${shipmentsMethods.methods[method].name}, ${priceParser(
               shipmentsMethods.methods[method].price.current,
               shipmentsMethods.methods[method].price.currency
-            )}`
+            )}`,
           }))}
         />
       ) : (
@@ -61,7 +61,7 @@ const Shipping = () => {
           onClick={() => {
             checkoutDispatch({
               type: "updateCheckoutCurrentTab",
-              payload: "CustomerInfoForm"
+              payload: "CustomerInfoForm",
             });
           }}
         >
@@ -72,7 +72,7 @@ const Shipping = () => {
             submitCustomerShipping(storeState, shipmentCode).then(() => {
               checkoutDispatch({
                 type: "updateCheckoutCurrentTab",
-                payload: "CustomerPayment"
+                payload: "CustomerPayment",
               });
             });
           }}

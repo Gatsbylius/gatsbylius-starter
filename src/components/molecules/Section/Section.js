@@ -15,7 +15,7 @@ Section.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   row: PropTypes.bool,
-  raw: PropTypes.bool
+  raw: PropTypes.bool,
 };
 
 export default Section;

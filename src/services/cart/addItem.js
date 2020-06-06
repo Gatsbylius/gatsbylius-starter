@@ -1,7 +1,7 @@
-import toastr from "toastr";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { ensureCartKey } from "./";
-import { toastrConfig } from "helpers/themeHelpers";
+import { toastConfig } from "helpers/themeHelpers";
 
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
@@ -18,12 +18,12 @@ export const addVariantToCart = async (
   const cartKey = storeState.cartKey;
 
   storeDispatch({
-    type: "updateProducts"
+    type: "updateProducts",
   });
 
   const productData = {
     productCode: productCode,
-    quantity: qty
+    quantity: qty,
   };
 
   const successQtyString = qty > 1 ? ` (x${qty})` : ``;
@@ -34,27 +34,27 @@ export const addVariantToCart = async (
 
   await axios
     .post(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items`, productData)
-    .then(response => {
-      toastr.success(
+    .then((response) => {
+      toast.success(
         `Successfully added to cart`,
         `"${name}"` + successQtyString,
-        toastrConfig
+        toastConfig
       );
       storeDispatch({
         type: "updateProductsSuccess",
-        payload: response.data.items
+        payload: response.data.items,
       });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
-    .catch(err => {
-      toastr.error(
+    .catch((err) => {
+      toast.error(
         `Was not added to cart, error.`,
         `"${name}"` + successQtyString,
-        toastrConfig
+        toastConfig
       );
       storeDispatch({
         type: "updateProductsError",
-        payload: err.message
+        payload: err.message,
       });
       console.error("Error on add to cart", err);
     });

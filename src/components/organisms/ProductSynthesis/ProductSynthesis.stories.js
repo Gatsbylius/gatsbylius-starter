@@ -12,11 +12,11 @@ storiesOf("Organisms|ProductSynthesis").add("Default", () => (
         {
           price: {
             current: 1050,
-            currency: "USD"
+            currency: "USD",
           },
-          code: "variant0code"
-        }
-      ]
+          code: "variant0code",
+        },
+      ],
     }}
   />
 ));

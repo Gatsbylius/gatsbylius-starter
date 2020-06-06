@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import { addVariantToCart } from "services/cart";
 import AddToCart from "./AddToCart";
@@ -34,7 +34,7 @@ AddToCartContainer.propTypes = {
   variantsCode: PropTypes.string.isRequired,
   qty: PropTypes.number.isRequired,
   isSimple: PropTypes.bool,
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default AddToCartContainer;

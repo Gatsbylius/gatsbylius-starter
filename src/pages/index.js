@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => (
     <Section title="Our latest products">
       <Loader />
       <ListItems>
-        {[...data.allProduct.nodes].slice(0, 8).map(product => (
+        {[...data.allProduct.nodes].slice(0, 8).map((product) => (
           <CardItem
             key={product.slug}
             name={product.name}
@@ -40,7 +40,7 @@ const IndexPage = ({ data }) => (
 
     <Section title="Our categories">
       <ListItems>
-        {data.allCategory.nodes.map(category => {
+        {data.allCategory.nodes.map((category) => {
           const fluidCategoryImage = category.localImage
             ? category.localImage.childImageSharp.fluid
             : data.file.childImageSharp.fluid;
@@ -60,7 +60,7 @@ const IndexPage = ({ data }) => (
 );
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

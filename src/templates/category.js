@@ -49,7 +49,7 @@ const Category = ({ data }) => {
               All {categoryName}
             </CategoryLink>
 
-            {subCategories.map(subCategory => {
+            {subCategories.map((subCategory) => {
               return (
                 <CategoryLink
                   key={subCategory.code}
@@ -65,7 +65,7 @@ const Category = ({ data }) => {
         {products && products.length > 0 && (
           <Section title="Products">
             <ListItems small>
-              {products.map(product => (
+              {products.map((product) => (
                 <CardItem
                   key={product.slug}
                   to={`/product/${product.slug}`}
@@ -81,11 +81,11 @@ const Category = ({ data }) => {
         {!products.length > 0 && subCategories && subCategories.length > 0 && (
           <Section title="Products" raw>
             <ListItems small>
-              {subCategories.map(subCategory => {
+              {subCategories.map((subCategory) => {
                 return (
                   subCategory.products &&
                   subCategory.products.length > 0 &&
-                  subCategory.products.map(product => {
+                  subCategory.products.map((product) => {
                     return (
                       <CardItem
                         key={product.slug}
@@ -107,7 +107,7 @@ const Category = ({ data }) => {
 };
 
 Category.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default Category;

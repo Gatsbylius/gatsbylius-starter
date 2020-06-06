@@ -2,7 +2,7 @@ import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import { CartButton, CartInfo } from "./styled";
 

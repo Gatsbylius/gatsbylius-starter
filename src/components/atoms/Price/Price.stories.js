@@ -4,7 +4,7 @@ import Price from "./Price";
 
 const price = {
   current: 2599,
-  currency: "EUR"
+  currency: "EUR",
 };
 
 storiesOf("atoms|Price")

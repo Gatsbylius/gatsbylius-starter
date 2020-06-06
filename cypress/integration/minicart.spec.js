@@ -8,18 +8,14 @@ describe("MiniCart", () => {
 
   it("shoud display 0$ subtotal & cart button on initial state", () => {
     cy.visit("/");
-    cy.get(cartQuantity)
-      .first()
-      .click();
+    cy.get(cartQuantity).first().click();
     cy.contains("Subtotal: $0").should("be.visible");
     cy.contains("Go to cart").should("be.visible");
   });
 
   it("click on cart button should redirect to cart page", () => {
     cy.visit("/");
-    cy.get(cartQuantity)
-      .first()
-      .click();
+    cy.get(cartQuantity).first().click();
     cy.contains("Go to cart").click();
 
     cy.url().should("include", "/cart");
@@ -29,9 +25,7 @@ describe("MiniCart", () => {
     cy.visit("/product/car-lights-and-stars");
     cy.contains("Add to cart").click();
 
-    cy.get(cartQuantity)
-      .first()
-      .click();
+    cy.get(cartQuantity).first().click();
 
     // Not fan of this selector
     // @TODO: refactor

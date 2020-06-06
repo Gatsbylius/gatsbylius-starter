@@ -7,7 +7,7 @@ storiesOf("Organisms|Breadcrumb").add("Default", () => (
     breadcrumb={[
       { title: "Home", to: "/" },
       { title: "Category", to: "/category" },
-      { title: "Product" }
+      { title: "Product" },
     ]}
   ></Breadcrumb>
 ));

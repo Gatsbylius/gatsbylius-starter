@@ -10,10 +10,10 @@ const item = {
     name: "Product name",
     images: [
       {
-        cachedPath: "https://i.picsum.photos/id/769/200/300.jpg"
-      }
-    ]
-  }
+        cachedPath: "https://i.picsum.photos/id/769/200/300.jpg",
+      },
+    ],
+  },
 };
 
 storiesOf("Organisms|Checkout/Sidebar/SidebarItem")

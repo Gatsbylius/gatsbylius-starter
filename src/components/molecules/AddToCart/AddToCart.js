@@ -14,7 +14,7 @@ const AddToCart = ({ onClick, loading = false }) => {
 
 AddToCart.propTypes = {
   onClick: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 };
 
 export default AddToCart;

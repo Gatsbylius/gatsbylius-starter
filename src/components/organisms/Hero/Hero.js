@@ -4,7 +4,7 @@ import {
   StyledBackgroundImage,
   Overlay,
   HeroTitle,
-  HeroSubTitle
+  HeroSubTitle,
 } from "./styled";
 
 const Hero = ({ fluidImage, title, subtitle }) => {
@@ -21,7 +21,7 @@ const Hero = ({ fluidImage, title, subtitle }) => {
 Hero.propTypes = {
   fluidImage: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.string,
 };
 
 export default Hero;

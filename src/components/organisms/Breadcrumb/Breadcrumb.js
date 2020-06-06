@@ -20,9 +20,9 @@ Breadcrumb.propTypes = {
   breadcrumb: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      to: PropTypes.string
+      to: PropTypes.string,
     }).isRequired
-  ).isRequired
+  ).isRequired,
 };
 
 export default Breadcrumb;

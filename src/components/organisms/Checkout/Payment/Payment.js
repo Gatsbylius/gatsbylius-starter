@@ -8,11 +8,11 @@ import IconButton from "components/atoms/IconButton";
 import { initPayment } from "services/checkout/initPayment";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext
+  useCheckoutStateContext,
 } from "context/CheckoutContext";
 import { submitCustomerPayment } from "services/checkout/submitCustomerPayment";
 import { submitCompleteCheckout } from "services/checkout/submitCompleteCheckout";
@@ -43,9 +43,9 @@ const Payment = () => {
       {paymentsMethods && paymentsMethods.methods && (
         <RadioGroup
           onChange={setPaymentCode}
-          options={Object.keys(paymentsMethods.methods).map(method => ({
+          options={Object.keys(paymentsMethods.methods).map((method) => ({
             label: paymentsMethods.methods[method].name,
-            value: paymentsMethods.methods[method].code
+            value: paymentsMethods.methods[method].code,
           }))}
         />
       )}
@@ -55,7 +55,7 @@ const Payment = () => {
           onClick={() => {
             checkoutDispatch({
               type: "updateCheckoutCurrentTab",
-              payload: "CustomerShipping"
+              payload: "CustomerShipping",
             });
           }}
         >

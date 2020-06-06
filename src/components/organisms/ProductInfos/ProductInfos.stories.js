@@ -9,7 +9,7 @@ storiesOf("Organisms|ProductInfos").add("Default", () => (
       height: "100vh",
       maxWidth: "980px",
       width: "100%",
-      margin: "0 auto"
+      margin: "0 auto",
     }}
   >
     <ProductInfos
@@ -21,10 +21,10 @@ storiesOf("Organisms|ProductInfos").add("Default", () => (
           {
             price: {
               current: 1050,
-              currency: "USD"
+              currency: "USD",
             },
-            code: "variant0code"
-          }
+            code: "variant0code",
+          },
         ],
         localImage: {
           childImageSharp: {
@@ -35,10 +35,10 @@ storiesOf("Organisms|ProductInfos").add("Default", () => (
               aspectRatio: 0.7490636704119851,
               srcSet:
                 "https://i.picsum.photos/id/469/300/300.jpg 200w,\nhttps://i.picsum.photos/id/469/300/300.jpgg 400w,\nhttps://i.picsum.photos/id/469/300/300.jpg 800w,\nhttps://i.picsum.photos/id/469/300/300.jpg 1200w",
-              sizes: "(max-width: 800px) 100vw, 800px"
-            }
-          }
-        }
+              sizes: "(max-width: 800px) 100vw, 800px",
+            },
+          },
+        },
       }}
     />
   </div>

@@ -7,7 +7,7 @@ storiesOf("Layout|Header").add("Default", () => (
     siteTitle="Gatsbylius"
     menuLinks={[
       { node: { code: "code1", name: "menu1" } },
-      { node: { code: "code2", name: "menu2" } }
+      { node: { code: "code2", name: "menu2" } },
     ]}
   />
 ));

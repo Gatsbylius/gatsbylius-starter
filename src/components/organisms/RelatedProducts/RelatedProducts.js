@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import {
   RelatedProductsStyled,
   RelatedProductsItemTitle,
-  RelatedProductsImage
+  RelatedProductsImage,
 } from "./styled";
 
 const settings = {
@@ -21,25 +21,25 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true
-      }
+        dots: true,
+      },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2
-      }
+        initialSlide: 2,
+      },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const RelatedProducts = ({ data }) => {
@@ -48,14 +48,14 @@ const RelatedProducts = ({ data }) => {
       <h4>Similar Products</h4>
       <Slider {...settings}>
         {data.category.products
-          .filter(product => data.product.name !== product.name)
-          .map(product => {
+          .filter((product) => data.product.name !== product.name)
+          .map((product) => {
             return (
               <Link to={`/product/${product.slug}`} key={product.slug}>
                 <RelatedProductsImage
                   sizes={{
                     ...product.localImage.childImageSharp.fluid,
-                    aspectRatio: 2 / 2
+                    aspectRatio: 2 / 2,
                   }}
                 />
                 <RelatedProductsItemTitle>

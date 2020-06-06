@@ -5,14 +5,14 @@ import { StyledRadioGroup } from "./styled";
 
 const RadioGroup = ({ options, onChange = () => {}, defaultValue = null }) => {
   const [value, setValue] = React.useState(defaultValue);
-  const handleOnChange = value => {
+  const handleOnChange = (value) => {
     setValue(value);
     onChange(value);
   };
 
   return (
     <StyledRadioGroup>
-      {options.map(option => (
+      {options.map((option) => (
         <RadioButton
           key={option.value}
           name={option.value}
@@ -30,11 +30,11 @@ RadioGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
+      value: PropTypes.string.isRequired,
     })
   ).isRequired,
   defaultValue: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default RadioGroup;

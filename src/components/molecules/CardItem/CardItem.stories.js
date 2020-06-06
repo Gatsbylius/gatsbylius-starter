@@ -14,14 +14,14 @@ const product = {
         aspectRatio: 0.7490636704119851,
         srcSet:
           "https://i.picsum.photos/id/469/300/300.jpg 200w,\nhttps://i.picsum.photos/id/469/300/300.jpgg 400w,\nhttps://i.picsum.photos/id/469/300/300.jpg 800w,\nhttps://i.picsum.photos/id/469/300/300.jpg 1200w",
-        sizes: "(max-width: 800px) 100vw, 800px"
-      }
-    }
+        sizes: "(max-width: 800px) 100vw, 800px",
+      },
+    },
   },
   price: {
     current: 1050,
-    currency: "USD"
-  }
+    currency: "USD",
+  },
 };
 
 const category = {
@@ -36,10 +36,10 @@ const category = {
         aspectRatio: 0.7490636704119851,
         srcSet:
           "https://i.picsum.photos/id/469/300/300.jpg 200w,\nhttps://i.picsum.photos/id/469/300/300.jpgg 400w,\nhttps://i.picsum.photos/id/469/300/300.jpg 800w,\nhttps://i.picsum.photos/id/469/300/300.jpg 1200w",
-        sizes: "(max-width: 800px) 100vw, 800px"
-      }
-    }
-  }
+        sizes: "(max-width: 800px) 100vw, 800px",
+      },
+    },
+  },
 };
 
 storiesOf("Molecules|CardItem")

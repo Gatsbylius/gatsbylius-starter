@@ -13,7 +13,7 @@ const CategoryLink = ({ children, to, selected = false }) => {
 CategoryLink.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
 };
 
 export default CategoryLink;

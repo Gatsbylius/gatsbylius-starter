@@ -10,7 +10,7 @@ const Configurator = ({ variants, selectedVariant, onChange }) => {
 
   return (
     <OptionList>
-      {variants.map(variant => (
+      {variants.map((variant) => (
         <OptionItem
           key={variant.code}
           selected={selectedVariant.code === variant.code}
@@ -39,14 +39,14 @@ Configurator.propTypes = {
       code: PropTypes.string.isRequired,
       price: PropTypes.shape({
         current: PropTypes.number.isRequired,
-        currency: PropTypes.string.isRequired
-      }).isRequired
+        currency: PropTypes.string.isRequired,
+      }).isRequired,
     })
   ).isRequired,
   selectedVariant: PropTypes.shape({
-    code: PropTypes.string.isRequired
+    code: PropTypes.string.isRequired,
   }).isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Configurator;

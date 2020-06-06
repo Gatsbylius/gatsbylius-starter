@@ -9,12 +9,12 @@ import Button from "components/atoms/Button";
 import IconButton from "components/atoms/IconButton";
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext
+  useCheckoutStateContext,
 } from "context/CheckoutContext";
 import { submitCustomerInfo } from "services/checkout/submitCustomerInfo";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import { initCheckout } from "services/checkout/initCheckout";
 
@@ -33,7 +33,7 @@ const CustomerInfoForm = () => {
     });
   }
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -97,12 +97,12 @@ const CustomerInfoForm = () => {
           onClick={() => {
             checkoutDispatch({
               type: "updateCustomerInfos",
-              payload: formValues
+              payload: formValues,
             });
             submitCustomerInfo(storeState, formValues).then(() => {
               checkoutDispatch({
                 type: "updateCheckoutCurrentTab",
-                payload: "CustomerShipping"
+                payload: "CustomerShipping",
               });
             });
           }}

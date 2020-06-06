@@ -13,7 +13,7 @@ const Main = ({ children }) => {
 };
 
 Main.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Main;

@@ -4,7 +4,7 @@ const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
   const cartKey = storeState.cartKey;
 
-  const item = storeState.products.find(item => item.id === itemId);
+  const item = storeState.products.find((item) => item.id === itemId);
   let newItemQty;
 
   if (changeType === "increment") {
@@ -18,24 +18,24 @@ const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
   }
 
   storeDispatch({
-    type: "updateProducts"
+    type: "updateProducts",
   });
 
   await axios
     .put(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items/${item.id}`, {
-      quantity: newItemQty
+      quantity: newItemQty,
     })
-    .then(response => {
+    .then((response) => {
       storeDispatch({
         type: "updateProductsSuccess",
-        payload: response.data.items
+        payload: response.data.items,
       });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
-    .catch(error => {
+    .catch((error) => {
       storeDispatch({
         type: "updateProductsError",
-        payload: error.message
+        payload: error.message,
       });
     });
 };

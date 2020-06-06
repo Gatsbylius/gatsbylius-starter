@@ -5,14 +5,14 @@ export const ensureCartKey = async (storeState, storeDispatch) => {
   if (!storeState.cartKey) {
     await axios
       .post(`${SYLIUS_URL}/shop-api/carts`, {})
-      .then(response => {
+      .then((response) => {
         storeDispatch({
           type: "updateCartKey",
-          payload: response.data.tokenValue
+          payload: response.data.tokenValue,
         });
         storeState.cartKey = response.data.tokenValue;
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error on cart creation ", error);
       });
   }

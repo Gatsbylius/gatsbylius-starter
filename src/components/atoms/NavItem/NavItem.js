@@ -12,7 +12,7 @@ const NavItem = ({ children, to }) => {
 
 NavItem.propTypes = {
   children: PropTypes.node.isRequired,
-  to: PropTypes.string.isRequired
+  to: PropTypes.string.isRequired,
 };
 
 export default NavItem;

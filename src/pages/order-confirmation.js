@@ -3,7 +3,7 @@ import Paper from "components/layout/Paper";
 import Layout from "components/layout";
 import {
   ConfirmationTitle,
-  ConfirmationText
+  ConfirmationText,
 } from "components/layout/OrderConfirmation/styled";
 import { resetState } from "context/helper";
 
