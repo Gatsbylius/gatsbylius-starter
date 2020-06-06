@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  StyledBackgroundImage,
+  StyledHero,
+  StyledImage,
   Overlay,
   HeroTitle,
   HeroSubTitle,
@@ -9,12 +10,13 @@ import {
 
 const Hero = ({ fluidImage, title, subtitle }) => {
   return (
-    <StyledBackgroundImage fluid={fluidImage} Tag="section">
+    <StyledHero>
+      <StyledImage fluid={fluidImage} />
       <Overlay>
         <HeroTitle>{title}</HeroTitle>
         {subtitle && <HeroSubTitle>{subtitle}</HeroSubTitle>}
       </Overlay>
-    </StyledBackgroundImage>
+    </StyledHero>
   );
 };
 

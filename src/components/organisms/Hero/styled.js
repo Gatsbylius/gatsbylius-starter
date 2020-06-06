@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import BackgroundImage from "gatsby-background-image";
+import Img from "gatsby-image";
 import { spacing, color, mediaQuery } from "helpers/themeHelpers";
 
-export const StyledBackgroundImage = styled(BackgroundImage)`
+export const StyledHero = styled.section`
   position: relative;
   width: 100%;
   max-width: 1500px;
@@ -17,8 +17,26 @@ export const StyledBackgroundImage = styled(BackgroundImage)`
   }
 `;
 
+export const StyledImage = styled(Img)`
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const MiniCartImage = styled(Img)`
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+`;
+
 export const Overlay = styled.div`
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;

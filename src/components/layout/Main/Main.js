@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { spacing } from "helpers/themeHelpers";
 
 const StyledMain = styled.main`
+  position: relative;
   min-height: calc(100vh - (3 * ${spacing(["lg"])}));
   margin-top: ${spacing(["lg"])};
 `;
