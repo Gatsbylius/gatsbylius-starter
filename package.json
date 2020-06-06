@@ -31,7 +31,7 @@
     "react-radio-buttons": "^1.2.2",
     "react-select": "^3.0.8",
     "react-slick": "^0.26.1",
-    "react-use": "^13.21.0",
+    "react-use": "^15.1.1",
     "react-web-tabs": "^1.0.1",
     "styled-components": "^5.1.1",
     "toastr": "^2.1.4"
