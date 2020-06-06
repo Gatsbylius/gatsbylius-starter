@@ -1,14 +1,14 @@
-export const fontFamily = key => ({ theme }) =>
+export const fontFamily = (key) => ({ theme }) =>
   `font-family: ${theme.typography.families[key]};`;
 
-export const color = key => ({ theme }) => theme.colors[key];
+export const color = (key) => ({ theme }) => theme.colors[key];
 
-export const spacing = sizes => ({ theme }) =>
+export const spacing = (sizes) => ({ theme }) =>
   sizes
-    .map(size => `${theme.spaces[size]}${size === "none" ? "" : "rem"}`)
+    .map((size) => `${theme.spaces[size]}${size === "none" ? "" : "rem"}`)
     .join(" ");
 
-export const mediaQuery = size => {
+export const mediaQuery = (size) => {
   switch (size) {
     case "xl": {
       return "1214px";
@@ -43,5 +43,5 @@ export const toastrConfig = {
   showEasing: "swing",
   hideEasing: "linear",
   showMethod: "fadeIn",
-  hideMethod: "fadeOut"
+  hideMethod: "fadeOut",
 };

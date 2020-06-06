@@ -6,9 +6,9 @@ export const submitCustomerShipping = async (storeState, shipmentCode) => {
   if (storeState.cartKey) {
     return await axios
       .put(`${SYLIUS_URL}/shop-api/checkout/${storeState.cartKey}/shipping/0`, {
-        method: shipmentCode
+        method: shipmentCode,
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error on cart creation ", error);
       });
   }

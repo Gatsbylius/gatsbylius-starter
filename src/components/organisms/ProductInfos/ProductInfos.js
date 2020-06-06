@@ -16,8 +16,8 @@ const ProductInfos = ({ product }) => {
 ProductInfos.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    localImage: PropTypes.object.isRequired
-  }).isRequired
+    localImage: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export default ProductInfos;

@@ -15,7 +15,7 @@ export const submitCustomerInfo = async (storeState, formCustomerInfos) => {
           postcode: formCustomerInfos.postalCode,
           provinceName: "",
           company: "",
-          phoneNumber: formCustomerInfos.phone
+          phoneNumber: formCustomerInfos.phone,
         },
         billingAddress: {
           firstName: formCustomerInfos.firstName,
@@ -26,10 +26,10 @@ export const submitCustomerInfo = async (storeState, formCustomerInfos) => {
           postcode: formCustomerInfos.postalCode,
           provinceName: "",
           company: "",
-          phoneNumber: formCustomerInfos.phone
-        }
+          phoneNumber: formCustomerInfos.phone,
+        },
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error on cart creation ", error);
       });
   }

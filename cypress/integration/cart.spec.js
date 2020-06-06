@@ -17,9 +17,7 @@ describe("MiniCart", () => {
     cy.contains("Successfully added to cart").should("be.visible");
     cy.visit("/cart");
 
-    cy.get("span")
-      .contains("Car lights and stars")
-      .should("be.visible");
+    cy.get("span").contains("Car lights and stars").should("be.visible");
     cy.contains("10.99$").should("be.visible");
   });
 
@@ -36,12 +34,8 @@ describe("MiniCart", () => {
 
     cy.visit("/cart");
 
-    cy.get("span")
-      .contains("Car lights and stars")
-      .should("be.visible");
-    cy.get("span")
-      .contains("Moutain lake")
-      .should("be.visible");
+    cy.get("span").contains("Car lights and stars").should("be.visible");
+    cy.get("span").contains("Moutain lake").should("be.visible");
     cy.contains("21.98$").should("be.visible");
   });
 
@@ -74,9 +68,7 @@ describe("MiniCart", () => {
 
     cy.visit("/cart");
 
-    cy.get("span")
-      .contains("Car lights and stars")
-      .should("be.visible");
+    cy.get("span").contains("Car lights and stars").should("be.visible");
     cy.get(deleteIcon).click();
 
     // Not fan of this selector

@@ -21,7 +21,7 @@ RadioButton.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool
+  checked: PropTypes.bool,
 };
 
 export default RadioButton;

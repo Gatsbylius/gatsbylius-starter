@@ -6,13 +6,13 @@ export const initPayment = async (storeState, checkoutDispatch) => {
   if (storeState.cartKey) {
     await axios
       .get(`${SYLIUS_URL}/shop-api/checkout/${storeState.cartKey}/payment`, {})
-      .then(response => {
+      .then((response) => {
         checkoutDispatch({
           type: "updatePayment",
-          payload: { payments: response.data.payments }
+          payload: { payments: response.data.payments },
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error on cart creation ", error);
       });
   }

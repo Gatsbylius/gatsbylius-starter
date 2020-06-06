@@ -1,6 +1,6 @@
 const localeMapping = {
   EUR: "€",
-  USD: "$"
+  USD: "$",
 };
 
 export const priceParser = (centsPrice, locale, hasSymbolBefore) => {
@@ -11,6 +11,6 @@ export const priceParser = (centsPrice, locale, hasSymbolBefore) => {
     : `${centsPrice / 100}${currency}`;
 };
 
-export const getTotal = products => {
+export const getTotal = (products) => {
   return products.reduce((total, item) => total + item.total, 0);
 };

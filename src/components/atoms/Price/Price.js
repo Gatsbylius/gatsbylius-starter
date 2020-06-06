@@ -12,10 +12,10 @@ const Price = ({ price, hasSymbolBefore, fontSize }) => (
 Price.propTypes = {
   price: PropTypes.shape({
     current: PropTypes.number.isRequired,
-    currency: PropTypes.oneOf(["USD", "EUR"]).isRequired
+    currency: PropTypes.oneOf(["USD", "EUR"]).isRequired,
   }),
   hasSymbolBefore: PropTypes.bool,
-  fontSize: PropTypes.string
+  fontSize: PropTypes.string,
 };
 
 export default Price;

@@ -7,14 +7,14 @@ import FormAction from "components/atoms/Form/FormAction";
 import Price from "components/atoms/Price";
 import {
   useStoreDispatchContext,
-  useStoreStateContext
+  useStoreStateContext,
 } from "context/StoreContext";
 import { getTotal } from "helpers/cartHelper";
 import {
   MiniCartHeader,
   MiniCartItems,
   MiniCartTotal,
-  MiniCart as MinicartComponent
+  MiniCart as MinicartComponent,
 } from "./styled";
 
 const miniCartRef = React.createRef();
@@ -52,7 +52,7 @@ const MiniCart = ({ open = false }) => {
     ) {
       document
         .getElementsByTagName("main")[0]
-        .addEventListener("mousedown", e => {
+        .addEventListener("mousedown", (e) => {
           if (miniCartRef.current && !miniCartRef.current.contains(e.target)) {
             storeDispatch({ type: "toggleMiniCart" });
           }
@@ -67,7 +67,7 @@ const MiniCart = ({ open = false }) => {
             <Price
               price={{
                 current: getTotal(storeState.products),
-                currency: storeState.currency
+                currency: storeState.currency,
               }}
               fontSize="1rem"
               hasSymbolBefore
@@ -75,7 +75,7 @@ const MiniCart = ({ open = false }) => {
           </MiniCartTotal>
         </MiniCartHeader>
         <MiniCartItems>
-          {storeState.products.map(item => {
+          {storeState.products.map((item) => {
             const productImage = allProduct.edges.find(
               ({ node }) => node.code === item.product.code
             );
@@ -88,7 +88,7 @@ const MiniCart = ({ open = false }) => {
                 quantity={item.quantity}
                 price={{
                   current: item.total / item.quantity,
-                  currency: storeState.currency
+                  currency: storeState.currency,
                 }}
               />
             );

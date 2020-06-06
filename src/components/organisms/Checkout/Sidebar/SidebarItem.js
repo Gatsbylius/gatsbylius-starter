@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { FaChevronLeft, FaChevronRight, FaTimesCircle } from "react-icons/fa";
 import {
   useStoreStateContext,
-  useStoreDispatchContext
+  useStoreDispatchContext,
 } from "context/StoreContext";
 import { priceParser } from "helpers/cartHelper";
 import { incrementQty, decrementQty, removeItemFromCart } from "services/cart";
@@ -107,7 +107,7 @@ const SidebarItem = ({ item, isCartPage }) => {
 
 SidebarItem.propTypes = {
   isCartPage: PropTypes.bool,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
 };
 
 export default SidebarItem;

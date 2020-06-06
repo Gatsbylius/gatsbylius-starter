@@ -22,6 +22,6 @@ CardItem.propTypes = {
   to: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   imageFluid: PropTypes.object.isRequired,
-  price: Price.propTypes.price
+  price: Price.propTypes.price,
 };
 export default CardItem;

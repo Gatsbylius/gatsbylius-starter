@@ -8,7 +8,7 @@ const IconButton = ({
   onClick,
   children,
   size = "1.25rem",
-  name = null
+  name = null,
 }) => {
   return (
     <IconButtonStyled aria-label={name} onClick={onClick}>
@@ -21,7 +21,7 @@ const IconButton = ({
 IconButton.propTypes = {
   ...Button.propTypes,
   icon: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-  size: PropTypes.string
+  size: PropTypes.string,
 };
 
 export default IconButton;

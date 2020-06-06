@@ -8,7 +8,7 @@ const Loader = ({ size = "1.25rem", color = "#fff" }) => {
 
 Loader.propTypes = {
   size: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 export default Loader;

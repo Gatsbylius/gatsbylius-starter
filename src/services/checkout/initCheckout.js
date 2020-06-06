@@ -6,7 +6,7 @@ export const initCheckout = async (storeState, checkoutDispatch) => {
   if (storeState.cartKey) {
     await axios
       .get(`${SYLIUS_URL}/shop-api/checkout/${storeState.cartKey}`, {})
-      .then(response => {
+      .then((response) => {
         checkoutDispatch({
           type: "updateOrderSummary",
           payload: {
@@ -16,11 +16,11 @@ export const initCheckout = async (storeState, checkoutDispatch) => {
             taxes: response.data.totals.taxes,
             total: response.data.totals.total,
             cartDiscount: response.cartDiscount,
-            currency: response.currency
-          }
+            currency: response.currency,
+          },
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error on cart creation ", error);
       });
   }

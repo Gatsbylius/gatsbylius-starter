@@ -10,7 +10,7 @@ import {
   HeadContainer,
   Divider,
   FinalPrice,
-  ButtonContainer
+  ButtonContainer,
 } from "./styled";
 import { useStoreStateContext } from "context/StoreContext";
 import SidebarItem from "./SidebarItem";
@@ -27,7 +27,7 @@ const Sidebar = ({ isCartPage = false }) => {
         <ArticlesNumber>{items.length}</ArticlesNumber>
       </HeadContainer>
       <Divider />
-      {items.map(item => {
+      {items.map((item) => {
         return (
           <SidebarItem key={item.id} item={item} isCartPage={isCartPage} />
         );
@@ -47,7 +47,7 @@ const Sidebar = ({ isCartPage = false }) => {
 };
 
 Sidebar.propTypes = {
-  isCartPage: PropTypes.bool
+  isCartPage: PropTypes.bool,
 };
 
 export default Sidebar;

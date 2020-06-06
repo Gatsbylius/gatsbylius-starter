@@ -17,7 +17,7 @@ const SlideMenu = ({ children, toggleIsOpen, isOpen = false }) => {
 
 SlideMenu.propTypes = {
   children: PropTypes.node.isRequired,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 };
 
 export default SlideMenu;

@@ -15,7 +15,7 @@ const AsideMenu = ({ children, title }) => {
 
 AsideMenu.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export default AsideMenu;

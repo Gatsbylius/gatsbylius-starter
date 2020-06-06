@@ -10,7 +10,7 @@ const QuantitySelect = ({ min = 1, max = 5, ...props }) => {
     for (let index = min; index <= max; index++) {
       options.push({
         value: index,
-        label: index
+        label: index,
       });
     }
 
@@ -29,7 +29,7 @@ const QuantitySelect = ({ min = 1, max = 5, ...props }) => {
 
 QuantitySelect.propTypes = {
   min: PropTypes.number,
-  max: PropTypes.number
+  max: PropTypes.number,
 };
 
 export default QuantitySelect;

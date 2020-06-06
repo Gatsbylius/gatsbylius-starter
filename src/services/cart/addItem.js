@@ -18,12 +18,12 @@ export const addVariantToCart = async (
   const cartKey = storeState.cartKey;
 
   storeDispatch({
-    type: "updateProducts"
+    type: "updateProducts",
   });
 
   const productData = {
     productCode: productCode,
-    quantity: qty
+    quantity: qty,
   };
 
   const successQtyString = qty > 1 ? ` (x${qty})` : ``;
@@ -34,7 +34,7 @@ export const addVariantToCart = async (
 
   await axios
     .post(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items`, productData)
-    .then(response => {
+    .then((response) => {
       toastr.success(
         `Successfully added to cart`,
         `"${name}"` + successQtyString,
@@ -42,11 +42,11 @@ export const addVariantToCart = async (
       );
       storeDispatch({
         type: "updateProductsSuccess",
-        payload: response.data.items
+        payload: response.data.items,
       });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
-    .catch(err => {
+    .catch((err) => {
       toastr.error(
         `Was not added to cart, error.`,
         `"${name}"` + successQtyString,
@@ -54,7 +54,7 @@ export const addVariantToCart = async (
       );
       storeDispatch({
         type: "updateProductsError",
-        payload: err.message
+        payload: err.message,
       });
       console.error("Error on add to cart", err);
     });

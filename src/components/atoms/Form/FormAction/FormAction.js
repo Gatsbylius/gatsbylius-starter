@@ -7,7 +7,7 @@ const FormAction = ({ children }) => {
 };
 
 FormAction.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default FormAction;

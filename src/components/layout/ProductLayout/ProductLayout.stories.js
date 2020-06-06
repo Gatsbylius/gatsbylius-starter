@@ -8,8 +8,8 @@ storiesOf("Layout|ProductLayout").add("Default", () => (
       product={{
         name: "Product",
         taxons: {
-          main: "Category"
-        }
+          main: "Category",
+        },
       }}
     >
       <p>Product content</p>

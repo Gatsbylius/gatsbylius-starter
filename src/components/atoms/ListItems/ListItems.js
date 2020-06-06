@@ -8,7 +8,7 @@ const ListItem = ({ children, small = false }) => {
 
 ListItem.propTypes = {
   children: PropTypes.node.isRequired,
-  small: PropTypes.bool
+  small: PropTypes.bool,
 };
 
 export default ListItem;

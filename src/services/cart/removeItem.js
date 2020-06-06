@@ -5,23 +5,23 @@ export const removeItemFromCart = async (itemId, storeState, storeDispatch) => {
   const cartKey = storeState.cartKey;
 
   storeDispatch({
-    type: "updateProducts"
+    type: "updateProducts",
   });
 
   await axios
     .delete(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items/${itemId}`)
-    .then(async response => {
+    .then(async (response) => {
       //@todo: update totals ?
       storeDispatch({
         type: "updateProductsSuccess",
-        payload: response.data.items
+        payload: response.data.items,
       });
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
-    .catch(error => {
+    .catch((error) => {
       storeDispatch({
         type: "updateProductsError",
-        payload: error.message
+        payload: error.message,
       });
     });
 };

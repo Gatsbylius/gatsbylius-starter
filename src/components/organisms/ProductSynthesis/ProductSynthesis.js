@@ -47,7 +47,7 @@ const ProductSynthesis = ({ product }) => {
         <QuantitySelect
           name="quantity"
           value={quantity}
-          onChange={value => setQuantity(value)}
+          onChange={(value) => setQuantity(value)}
         />
 
         {selectedVariant ? (
@@ -69,7 +69,7 @@ const ProductSynthesis = ({ product }) => {
 };
 
 ProductSynthesis.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductSynthesis;

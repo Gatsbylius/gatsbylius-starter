@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Tabs, TabPanel } from "react-web-tabs";
 import {
   useCheckoutDispatchContext,
-  useCheckoutStateContext
+  useCheckoutStateContext,
 } from "context/CheckoutContext";
 
 import Paper from "components/layout/Paper";
@@ -37,7 +37,7 @@ const CheckoutRecap = styled.section`
 const Checkout = () => {
   const checkoutState = useCheckoutStateContext();
   const checkoutDispatch = useCheckoutDispatchContext();
-  const isActiveTab = tabFor => checkoutState.currentTab === tabFor;
+  const isActiveTab = (tabFor) => checkoutState.currentTab === tabFor;
 
   return (
     <Layout>
@@ -46,10 +46,10 @@ const Checkout = () => {
           <CheckoutStep>
             <Tabs
               defaultTab={checkoutState.currentTab}
-              onChange={tabId =>
+              onChange={(tabId) =>
                 checkoutDispatch({
                   type: "updateCheckoutCurrentTab",
-                  payload: tabId
+                  payload: tabId,
                 })
               }
             >

@@ -7,12 +7,12 @@ storiesOf("Atoms|Form/Input/RadioGroup").add("Default", () => (
     options={[
       {
         label: "Option 1",
-        value: "val1"
+        value: "val1",
       },
       {
         label: "Option 2",
-        value: "val2"
-      }
+        value: "val2",
+      },
     ]}
   />
 ));

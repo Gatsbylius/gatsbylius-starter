@@ -2,9 +2,7 @@ describe("Homepage", () => {
   it("Click on Details button should display product page", () => {
     cy.visit("/");
 
-    cy.contains("Car lights and stars")
-      .first()
-      .click();
+    cy.contains("Car lights and stars").first().click();
 
     cy.url().should("include", "/product/");
   });
@@ -12,9 +10,7 @@ describe("Homepage", () => {
   it("Click on a category should display category page", () => {
     cy.visit("/");
 
-    cy.contains("Prints")
-      .first()
-      .click();
+    cy.contains("Prints").first().click();
 
     cy.url().should("include", "/categories/prints");
   });

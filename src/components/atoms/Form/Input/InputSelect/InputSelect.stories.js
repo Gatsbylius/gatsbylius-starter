@@ -8,7 +8,7 @@ storiesOf("Atoms|Form/Input/InputSelect")
     <InputSelect
       name="Name select"
       label="label select"
-      onChange={e => action("OnChange")(e)}
+      onChange={(e) => action("OnChange")(e)}
     />
   ))
   .add("With default value", () => (
@@ -16,6 +16,6 @@ storiesOf("Atoms|Form/Input/InputSelect")
       name="Name select"
       label="label select"
       defaultValue="UK"
-      onChange={e => action("OnChange")(e)}
+      onChange={(e) => action("OnChange")(e)}
     />
   ));

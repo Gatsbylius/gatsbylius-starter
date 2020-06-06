@@ -14,11 +14,11 @@ const ProductLayout = ({ children, product }) => {
               { title: "Home", to: "/" },
               {
                 title: product.taxons.main,
-                to: `/categories/${product.taxons.main}`
+                to: `/categories/${product.taxons.main}`,
               },
               {
-                title: product.name
-              }
+                title: product.name,
+              },
             ]}
           />
           {children}
@@ -33,9 +33,9 @@ ProductLayout.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     taxons: PropTypes.shape({
-      main: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      main: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default ProductLayout;
