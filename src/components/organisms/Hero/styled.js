@@ -5,7 +5,9 @@ import { spacing, color, mediaQuery } from "helpers/themeHelpers";
 export const StyledBackgroundImage = styled(BackgroundImage)`
   position: relative;
   width: 100%;
+  max-width: 1500px;
   height: 250px;
+  margin: 0 auto;
   @media (min-width: ${mediaQuery("xs")}) {
     height: 300px;
   }

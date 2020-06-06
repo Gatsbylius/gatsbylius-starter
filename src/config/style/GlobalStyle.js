@@ -1,6 +1,38 @@
 import { createGlobalStyle } from "styled-components";
 import { fontFamily, spacing, color } from "helpers/themeHelpers";
+
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: 'swap';
+    font-weight: 300;
+    src: local('Montserrat Light'), local('Montserrat-Light'),
+        url('./fonts/montserrat-v14-latin-300.woff2') format('woff2'),
+        url('./fonts/montserrat-v14-latin-300.woff') format('woff'),
+        url('./fonts/montserrat-v14-latin-300.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-display: 'swap';
+    font-weight: 300;
+    src: local('Montserrat Light Italic'), local('Montserrat-LightItalic'),
+        url('./fonts/montserrat-v14-latin-300italic.woff2') format('woff2'),
+        url('./fonts/montserrat-v14-latin-300italic.woff') format('woff'),
+        url('./fonts/montserrat-v14-latin-300italic.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: 'swap';
+    font-weight: 600;
+    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+        url('./fonts/montserrat-v14-latin-600.woff2') format('woff2'),
+        url('./fonts/montserrat-v14-latin-600.woff') format('woff'),
+        url('./fonts/montserrat-v14-latin-600.ttf') format('truetype');
+  }
+
   /* Box sizing rules */
   *,
   *::before,
@@ -102,28 +134,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
-/* ==== Colors ==== */
-body {
-  background-color: ${color("background")};
-}
+  body {
+    background-color: ${color("background")};
+  }
 
-
-/* ==== Notifications ==== */
-#toast-container > div {
-  
-  box-shadow: ${({ theme }) => theme.boxShadows.light} !important;
-  transition: box-shadow 0.3s;
-}
-
-#toast-container > div:hover {
-  box-shadow: ${({ theme }) => theme.boxShadows.medium} !important;
-}
-
-.toast.toast-success {
-  background-color: ${color("success")} !important;
-}
-
-.toast-progress {
-  background-color: ${color("white")} !important;
-}
 `;
