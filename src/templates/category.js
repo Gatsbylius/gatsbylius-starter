@@ -69,7 +69,10 @@ const Category = ({ data }) => {
                 <CardItem
                   key={product.slug}
                   to={`/product/${product.slug}`}
-                  imageFluid={product.localImage.childImageSharp.fluid}
+                  imageFluid={
+                    product.localImage &&
+                    product.localImage.childImageSharp.fluid
+                  }
                   name={product.name}
                   price={product.variants[0].price}
                 ></CardItem>
@@ -90,7 +93,10 @@ const Category = ({ data }) => {
                       <CardItem
                         key={product.slug}
                         to={`/product/${product.slug}`}
-                        imageFluid={product.localImage.childImageSharp.fluid}
+                        imageFluid={
+                          product.localImage &&
+                          product.localImage.childImageSharp.fluid
+                        }
                         name={product.name}
                         price={product.variants[0].price}
                       ></CardItem>

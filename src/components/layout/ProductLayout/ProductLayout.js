@@ -12,14 +12,15 @@ const ProductLayout = ({ children, product }) => {
           <Breadcrumb
             breadcrumb={[
               { title: "Home", to: "/" },
-              {
-                title: product.taxons.main,
-                to: `/categories/${product.taxons.main}`,
-              },
+              product.taxons &&
+                product.taxons.main && {
+                  title: product.taxons.main,
+                  to: `/categories/${product.taxons.main}`,
+                },
               {
                 title: product.name,
               },
-            ]}
+            ].filter(Boolean)}
           />
           {children}
         </ProductPageContent>
@@ -33,8 +34,8 @@ ProductLayout.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     taxons: PropTypes.shape({
-      main: PropTypes.string.isRequired,
-    }).isRequired,
+      main: PropTypes.string,
+    }),
   }).isRequired,
 };
 
