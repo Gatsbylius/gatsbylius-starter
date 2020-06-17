@@ -56,10 +56,7 @@ const Header = ({ siteTitle = "", menuLinks }) => {
               menuLinks.map(({ node }) => (
                 <Fragment key={`wide-${node.code}`}>
                   <NavItem>
-                    <NavLink
-                      activeClassName="active"
-                      to={`/categories/${node.code}`}
-                    >
+                    <NavLink activeClassName="active" to={`/${node.slug}`}>
                       {node.name}
                     </NavLink>
                   </NavItem>
@@ -95,10 +92,7 @@ const Header = ({ siteTitle = "", menuLinks }) => {
             {menuLinks.map(({ node }) => (
               <Fragment key={`touch-${node.code}`}>
                 <NavItemTouch>
-                  <NavLinkTouch
-                    activeClassName="active"
-                    to={`/categories/${node.code}`}
-                  >
+                  <NavLinkTouch activeClassName="active" to={`/${node.slug}`}>
                     {node.name}
                   </NavLinkTouch>
                 </NavItemTouch>

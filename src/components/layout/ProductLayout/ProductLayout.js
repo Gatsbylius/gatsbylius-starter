@@ -10,7 +10,7 @@ const getMainCategory = (product, categories) => {
     return null;
   }
 
-  return categories.find(category => category.code === product.taxons.main);
+  return categories.find((category) => category.code === product.taxons.main);
 };
 
 const ProductLayout = ({ children, product }) => {
@@ -40,11 +40,11 @@ const ProductLayout = ({ children, product }) => {
               { title: "Home", to: "/" },
               mainCategory && {
                 title: mainCategory.name,
-                to: `/categories/${mainCategory.slug}`
+                to: `/${mainCategory.slug}`,
               },
               {
-                title: product.name
-              }
+                title: product.name,
+              },
             ].filter(Boolean)}
           />
           {children}
@@ -59,9 +59,9 @@ ProductLayout.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     taxons: PropTypes.shape({
-      main: PropTypes.string
-    })
-  }).isRequired
+      main: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default ProductLayout;

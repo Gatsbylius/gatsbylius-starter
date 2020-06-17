@@ -12,6 +12,6 @@ describe("Homepage", () => {
 
     cy.contains("Prints").first().click();
 
-    cy.url().should("include", "/categories/prints");
+    cy.url().should("include", "/category/prints");
   });
 });

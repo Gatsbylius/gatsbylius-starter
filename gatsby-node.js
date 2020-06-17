@@ -44,13 +44,15 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
     result.data.allCategory.edges.forEach(({ node }) => {
-      createPage({
-        path: `/categories/${node.slug}`,
-        component: categoryTemplate,
-        context: {
-          code: node.code
-        }
-      });
+      if (node.products.length > 0) {
+        createPage({
+          path: `/${node.slug}`,
+          component: categoryTemplate,
+          context: {
+            code: node.code
+          }
+        });
+      }
     });
     result.data.allProduct.nodes.forEach(node => {
       createPage({

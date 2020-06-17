@@ -42,18 +42,20 @@ const IndexPage = ({ data }) => (
 
     <Section title="Our categories">
       <ListItems>
-        {data.allCategory.nodes.map((category) => {
-          return (
-            <CardItem
-              key={category.code}
-              to={`/categories/${category.code}`}
-              name={category.name}
-              imageFluid={
-                category.localImage && category.localImage.childImageSharp.fluid
-              }
-            />
-          );
-        })}
+        {data.allCategory.nodes
+          .filter((category) => category.products.length > 0)
+          .map((category) => {
+            return (
+              <CardItem
+                key={category.code}
+                to={`/${category.slug}`}
+                name={category.name}
+                imageFluid={
+                  category.thumbnail && category.thumbnail.childImageSharp.fluid
+                }
+              />
+            );
+          })}
       </ListItems>
     </Section>
   </Layout>
@@ -82,11 +84,8 @@ export const query = graphql`
     }
     allCategory {
       nodes {
-        id
-        code
-        slug
-        name
-        localImage {
+        ...CategoryInfos
+        thumbnail: localImage {
           childImageSharp {
             fluid(maxHeight: 250, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp

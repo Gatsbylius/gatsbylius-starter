@@ -11,63 +11,48 @@ import CategoryLink from "components/atoms/CategoryLink";
 
 const Category = ({ data }) => {
   const category = data.category;
-  const products = category.products;
-  const baseCategoryCode = category.parent
-    ? category.parent.code
-    : category.code;
-  let subCategories = category.children;
-  let fluidCategoryImage =
-    category.localImage &&
-    (category.localImage
-      ? category.localImage.childImageSharp.fluid
-      : data.file.childImageSharp.fluid);
-  let categoryName = category.name;
-
-  if (category.parent) {
-    fluidCategoryImage =
-      category.parent.localImage &&
-      (category.parent.localImage
-        ? category.parent.localImage.childImageSharp.fluid
-        : data.file.childImageSharp.fluid);
-    categoryName = category.parent.name;
-    subCategories = category.parent.children;
-  }
+  const mainCategory =
+    category.parent && category.parent.products.length > 0
+      ? category.parent
+      : category;
 
   return (
     <Layout>
-      {fluidCategoryImage && (
-        <Hero fluidImage={fluidCategoryImage} title={categoryName} />
+      {category.localImage && (
+        <Hero
+          fluidImage={category.localImage.childImageSharp.fluid}
+          title={category.name}
+        />
       )}
 
       <Section row>
-        {subCategories && subCategories.length > 0 && (
-          <AsideMenu title={`Our ${categoryName}`}>
-            <CategoryLink
-              selected={baseCategoryCode === category.code}
-              to={`/categories/${baseCategoryCode}`}
-            >
-              All {categoryName}
-            </CategoryLink>
+        <AsideMenu title={`Our ${mainCategory.name}`}>
+          <CategoryLink
+            selected={mainCategory.code === category.code}
+            to={`/${mainCategory.slug}`}
+          >
+            All {mainCategory.name}
+          </CategoryLink>
 
-            {subCategories.map((subCategory) => {
-              return (
-                <CategoryLink
-                  key={subCategory.code}
-                  to={`/categories/${subCategory.code}`}
-                  selected={subCategory.code === category.code}
-                >
-                  {subCategory.name}
-                </CategoryLink>
-              );
-            })}
-          </AsideMenu>
-        )}
-        {products && products.length > 0 && (
-          <Section title="Products">
+          {mainCategory.children.map((subCategory) => {
+            return (
+              <CategoryLink
+                key={subCategory.code}
+                to={`/${subCategory.slug}`}
+                selected={subCategory.code === category.code}
+              >
+                {subCategory.name}
+              </CategoryLink>
+            );
+          })}
+        </AsideMenu>
+
+        {category.products.length > 0 && (
+          <Section title="Products" raw>
             <ListItems small>
-              {products.map((product) => (
+              {category.products.map((product) => (
                 <CardItem
-                  key={product.slug}
+                  key={product.id}
                   to={`/product/${product.slug}`}
                   imageFluid={
                     product.localImage &&
@@ -77,33 +62,6 @@ const Category = ({ data }) => {
                   price={product.variants[0].price}
                 ></CardItem>
               ))}
-            </ListItems>
-          </Section>
-        )}
-
-        {!products.length > 0 && subCategories && subCategories.length > 0 && (
-          <Section title="Products" raw>
-            <ListItems small>
-              {subCategories.map((subCategory) => {
-                return (
-                  subCategory.products &&
-                  subCategory.products.length > 0 &&
-                  subCategory.products.map((product) => {
-                    return (
-                      <CardItem
-                        key={product.slug}
-                        to={`/product/${product.slug}`}
-                        imageFluid={
-                          product.localImage &&
-                          product.localImage.childImageSharp.fluid
-                        }
-                        name={product.name}
-                        price={product.variants[0].price}
-                      ></CardItem>
-                    );
-                  })
-                );
-              })}
             </ListItems>
           </Section>
         )}
@@ -119,82 +77,33 @@ Category.propTypes = {
 export default Category;
 
 export const query = graphql`
+  fragment CategoryInfos on Category {
+    id
+    name
+    slug
+    code
+    localImage {
+      childImageSharp {
+        fluid(maxWidth: 1500, maxHeight: 550, quality: 50) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    products {
+      ...ProductSynthesis
+    }
+  }
   query CategoryPageQuery($code: String) {
     category(code: { eq: $code }) {
-      code
-      slug
-      name
-      description
+      ...CategoryInfos
       parent {
-        id
-        ... on Category {
-          name
-          code
-          children {
-            ... on Category {
-              name
-              code
-            }
-          }
-          localImage {
-            childImageSharp {
-              fluid(maxWidth: 1500, maxHeight: 550, quality: 50) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
-      localImage {
-        childImageSharp {
-          fluid(maxWidth: 1500, maxHeight: 550, quality: 50) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      products {
-        id
-        name
-        slug
-        localImage {
-          childImageSharp {
-            fluid(maxHeight: 250, quality: 50) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-        variants {
-          price {
-            currency
-            current
-          }
+        ...CategoryInfos
+        children {
+          ...CategoryInfos
         }
       }
       children {
-        id
-        ... on Category {
-          code
-          slug
-          name
-          products {
-            id
-            name
-            slug
-            localImage {
-              childImageSharp {
-                fluid(maxHeight: 250, quality: 50) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-            variants {
-              price {
-                currency
-                current
-              }
-            }
-          }
-        }
+        ...CategoryInfos
       }
     }
   }
