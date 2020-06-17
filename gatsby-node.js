@@ -45,7 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
     result.data.allCategory.edges.forEach(({ node }) => {
       createPage({
-        path: `/categories/${node.code}`,
+        path: `/categories/${node.slug}`,
         component: categoryTemplate,
         context: {
           code: node.code
