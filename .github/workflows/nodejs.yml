@@ -19,6 +19,7 @@ jobs:
         uses: allenevans/set-env@v1.0.0
         with:
           GATSBY_SYLIUS_URL: ${{ secrets.SYLIUS_URL }}
+          GATSBY_SYLIUS_MAIN_TAXON_CODE: "category"
       - name: install
         working-directory: ${{env.working-directory}}
         run: npm ci

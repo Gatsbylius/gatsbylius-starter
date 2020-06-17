@@ -45,6 +45,10 @@ const settings = {
 };
 
 const RelatedProducts = ({ data }) => {
+  if (!data.category || !data.category.products) {
+    return null;
+  }
+
   return (
     <RelatedProductsStyled>
       <h4>Similar Products</h4>
@@ -54,12 +58,14 @@ const RelatedProducts = ({ data }) => {
           .map((product) => {
             return (
               <Link to={`/product/${product.slug}`} key={product.slug}>
-                <RelatedProductsImage
-                  sizes={{
-                    ...product.localImage.childImageSharp.fluid,
-                    aspectRatio: 2 / 2,
-                  }}
-                />
+                {product.localImage && (
+                  <RelatedProductsImage
+                    sizes={{
+                      ...product.localImage.childImageSharp.fluid,
+                      aspectRatio: 2 / 2,
+                    }}
+                  />
+                )}
                 <RelatedProductsItemTitle>
                   {product.name}
                 </RelatedProductsItemTitle>

@@ -32,7 +32,9 @@ const IndexPage = ({ data }) => (
             name={product.name}
             price={product.variants[0].price}
             to={`product/${product.slug}`}
-            imageFluid={product.localImage.childImageSharp.fluid}
+            imageFluid={
+              product.localImage && product.localImage.childImageSharp.fluid
+            }
           />
         ))}
       </ListItems>
@@ -41,16 +43,14 @@ const IndexPage = ({ data }) => (
     <Section title="Our categories">
       <ListItems>
         {data.allCategory.nodes.map((category) => {
-          const fluidCategoryImage = category.localImage
-            ? category.localImage.childImageSharp.fluid
-            : data.file.childImageSharp.fluid;
-
           return (
             <CardItem
               key={category.code}
               to={`/categories/${category.code}`}
               name={category.name}
-              imageFluid={fluidCategoryImage}
+              imageFluid={
+                category.localImage && category.localImage.childImageSharp.fluid
+              }
             />
           );
         })}
@@ -76,13 +76,6 @@ export const query = graphql`
     hero: file(name: { eq: "heroImage" }) {
       childImageSharp {
         fluid(maxWidth: 1500, maxHeight: 550, quality: 50) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-    file(name: { eq: "placeholder" }) {
-      childImageSharp {
-        fluid(maxHeight: 250, quality: 50) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

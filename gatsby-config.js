@@ -24,6 +24,7 @@ module.exports = {
       resolve: `gatsby-source-sylius`,
       options: {
         syliusUrl: process.env.GATSBY_SYLIUS_URL,
+        mainTaxonCode: process.env.GATSBY_SYLIUS_MAIN_TAXON_CODE,
         attributeDefinitions: `
           type Attributes {
             photographer: String
