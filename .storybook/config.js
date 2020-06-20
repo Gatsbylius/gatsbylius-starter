@@ -23,6 +23,7 @@ global.___loader = {
   hovering: () => {}
 };
 global.__PATH_PREFIX__ = "";
+global.__BASE_PATH__ = "";
 
 window.___navigate = pathname => {
   action("NavigateTo:")(pathname);
