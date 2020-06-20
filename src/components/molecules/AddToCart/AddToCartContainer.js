@@ -19,7 +19,6 @@ const AddToCartContainer = ({ slug, variantsCode, qty, isSimple, name }) => {
           variantsCode,
           qty,
           isSimple,
-          name,
           storeState,
           storeDispatch
         ).then(() => {});

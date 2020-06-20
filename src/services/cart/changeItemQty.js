@@ -1,4 +1,7 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import { toastConfig } from "helpers/themeHelpers";
+
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
@@ -26,6 +29,10 @@ const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
       quantity: newItemQty,
     })
     .then((response) => {
+      toast.success(
+        `Successfully update quantity (${newItemQty})`,
+        toastConfig
+      );
       storeDispatch({
         type: "updateProductsSuccess",
         payload: response.data.items,
@@ -33,6 +40,7 @@ const changeItemQty = async (itemId, changeType, storeState, storeDispatch) => {
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
     .catch((error) => {
+      toast.error(`Product quantity was not updated, error.`, toastConfig);
       storeDispatch({
         type: "updateProductsError",
         payload: error.message,

@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
 import axios from "axios";
-import { ensureCartKey } from "./";
+import { toast } from "react-toastify";
 import { toastConfig } from "helpers/themeHelpers";
+import { ensureCartKey } from "./";
 
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
@@ -10,7 +10,6 @@ export const addVariantToCart = async (
   variantsCode,
   qty,
   isSimple,
-  name,
   storeState,
   storeDispatch
 ) => {
@@ -26,8 +25,6 @@ export const addVariantToCart = async (
     quantity: qty,
   };
 
-  const successQtyString = qty > 1 ? ` (x${qty})` : ``;
-
   if (!isSimple) {
     productData.variantCode = variantsCode;
   }
@@ -35,11 +32,7 @@ export const addVariantToCart = async (
   await axios
     .post(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items`, productData)
     .then((response) => {
-      toast.success(
-        `Successfully added to cart`,
-        `"${name}"` + successQtyString,
-        toastConfig
-      );
+      toast.success(`Successfully added to cart`, toastConfig);
       storeDispatch({
         type: "updateProductsSuccess",
         payload: response.data.items,
@@ -47,11 +40,7 @@ export const addVariantToCart = async (
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
     .catch((err) => {
-      toast.error(
-        `Was not added to cart, error.`,
-        `"${name}"` + successQtyString,
-        toastConfig
-      );
+      toast.error(`Product was not added to cart, error.`, toastConfig);
       storeDispatch({
         type: "updateProductsError",
         payload: err.message,
