@@ -1,13 +1,30 @@
 import React from "react";
 import Layout from "components/layout";
 import Seo from "components/atoms/Seo";
+import NotFound from "components/organisms/NotFound";
 
-const NotFoundPage = () => (
+const NotFoundPage = ({ data }) => (
   <Layout>
     <Seo title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <NotFound categories={data.allCategory.nodes} />
   </Layout>
 );
 
 export default NotFoundPage;
+
+export const query = graphql`
+  query NotFoundPageQuery {
+    allCategory {
+      nodes {
+        ...CategoryInfos
+        thumbnail: localImage {
+          childImageSharp {
+            fluid(maxHeight: 250, quality: 50) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+    }
+  }
+`;
