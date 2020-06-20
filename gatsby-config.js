@@ -53,6 +53,14 @@ module.exports = {
         defaultQuality: 75
       }
     },
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-htaccess`,
+      options: {
+        ErrorDocument: `
+          ErrorDocument 404 /404.html
+        `
+      }
+    }
   ]
 };
