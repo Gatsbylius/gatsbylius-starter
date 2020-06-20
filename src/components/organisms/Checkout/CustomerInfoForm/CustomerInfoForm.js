@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import { FaArrowLeft } from "react-icons/fa";
 import Section from "components/molecules/Section";
 import InputText from "components/atoms/Form/Input/InputText";
@@ -91,7 +92,9 @@ const CustomerInfoForm = () => {
         />
       </FormGroup>
       <FormAction>
-        <IconButton icon={FaArrowLeft}>Return to Shop</IconButton>
+        <IconButton onClick={() => navigate("/")} icon={FaArrowLeft}>
+          Return to Shop
+        </IconButton>
         <Button
           type="submit"
           onClick={() => {
