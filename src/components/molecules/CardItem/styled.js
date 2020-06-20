@@ -19,8 +19,10 @@ export const CardItemImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: auto;
   width: 100%;
   max-height: 250px;
+  max-width: 250px;
 
   img {
     width: 100%;

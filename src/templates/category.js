@@ -55,12 +55,11 @@ const Category = ({ data }) => {
                   key={product.id}
                   to={`/product/${product.slug}`}
                   imageFluid={
-                    product.localImage &&
-                    product.localImage.childImageSharp.fluid
+                    product.thumbnail && product.thumbnail.childImageSharp.fluid
                   }
                   name={product.name}
                   price={product.variants[0].price}
-                ></CardItem>
+                />
               ))}
             </ListItems>
           </Section>

@@ -32,16 +32,7 @@ export const query = graphql`
   query ProductPageQuery($slug: String, $mainProductTaxon: String) {
     category(code: { eq: $mainProductTaxon }) {
       products {
-        id
-        name
-        slug
-        localImage {
-          childImageSharp {
-            fluid(maxWidth: 227, maxHeight: 227, quality: 50) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
+        ...ProductSynthesis
       }
     }
     product(slug: { eq: $slug }) {
