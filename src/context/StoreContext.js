@@ -14,7 +14,7 @@ export const defaultStoreState =
         error: null,
         products: [],
         cart: {},
-        step: "shopping",
+        step: null,
       };
 
 export const StoreStateContext = createContext(defaultStoreState);

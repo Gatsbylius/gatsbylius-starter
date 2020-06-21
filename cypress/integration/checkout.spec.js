@@ -14,6 +14,15 @@ describe("Checkout", () => {
     cy.clearLocalStorage();
   });
 
+  it("User without cart cannot see checkout & see an error message", () => {
+    cy.visit("/checkout");
+    cy.contains("An error occured, you will be redirect to cart page.").should(
+      "be.visible"
+    );
+
+    cy.location("pathname").should("eq", "/cart");
+  });
+
   it("User can go back on the checkout page", () => {
     initCheckout();
 

@@ -35,6 +35,17 @@ export const cartReducer = (state, action) => {
     case "updateStep": {
       return { ...state, step: action.payload };
     }
+    case "clearCart": {
+      return {
+        ...state,
+        products: [],
+        cartKey: "",
+        miniCartIsOpen: false,
+        isAdding: false,
+        success: null,
+        error: null,
+      };
+    }
     default: {
       throw new Error("This reducer action does not exist");
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import SidebarItem from "./SidebarItem";
+import CartRecapItem from "./CartRecapItem";
 
 const item = {
   id: 0,
@@ -16,6 +16,6 @@ const item = {
   },
 };
 
-storiesOf("Organisms|Checkout/Sidebar/SidebarItem")
-  .add("Default", () => <SidebarItem item={item} />)
-  .add("Is cart page", () => <SidebarItem item={item} isCartPage />);
+storiesOf("Organisms|Checkout/CartRecap/CartRecapItem")
+  .add("Default", () => <CartRecapItem item={item} />)
+  .add("Is cart page", () => <CartRecapItem item={item} isCartPage />);
