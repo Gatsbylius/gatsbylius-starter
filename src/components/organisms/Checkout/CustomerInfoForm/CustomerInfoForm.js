@@ -71,6 +71,15 @@ const CustomerInfoForm = () => {
     <Section title="Customer Information">
       <FormGroup>
         <InputText
+          label="email"
+          name="email"
+          type="email"
+          onChange={handleChange}
+          value={formValues.email}
+        />
+      </FormGroup>
+      <FormGroup>
+        <InputText
           label="first name"
           name="firstName"
           onChange={handleChange}

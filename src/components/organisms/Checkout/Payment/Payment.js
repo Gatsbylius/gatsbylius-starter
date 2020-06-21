@@ -24,6 +24,8 @@ const Payment = () => {
   const checkoutDispatch = useCheckoutDispatchContext();
   const [paymentCode, setPaymentCode] = React.useState();
 
+  console.log({ storeState, checkoutState });
+
   if (
     storeState.step !== "CustomerPayment" &&
     storeState.step === "CustomerShipping"
@@ -64,7 +66,10 @@ const Payment = () => {
         <Button
           onClick={() => {
             submitCustomerPayment(storeState, paymentCode).then(() => {
-              submitCompleteCheckout(storeState).then(() => {
+              submitCompleteCheckout(
+                storeState,
+                checkoutState.customerInfos
+              ).then(() => {
                 if (typeof window !== "undefined") {
                   window.location.replace(
                     `/order-confirmation?customerName=${checkoutState.customerInfos.firstName}`

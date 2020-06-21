@@ -34,6 +34,7 @@ describe("Checkout", () => {
   it("User can see success message at then end of the checkout", () => {
     initCheckout();
 
+    cy.get("input[name=email]").type("test@test.fr");
     cy.get("input[name=firstName]").type("FirstName");
     cy.get("input[name=lastName]").type("LastName");
     cy.get("input[name=address]").type("1 rue du test");

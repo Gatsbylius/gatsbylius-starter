@@ -26,6 +26,7 @@ export const defaultCheckoutState =
           currentShipment: {},
         },
         customerInfos: {
+          email: "",
           firstName: "",
           lastName: "",
           address: "",
