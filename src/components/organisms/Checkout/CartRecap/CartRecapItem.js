@@ -11,7 +11,7 @@ import { priceParser } from "helpers/cartHelper";
 import { incrementQty, decrementQty, removeItemFromCart } from "services/cart";
 import { Item } from "./styled";
 
-const SidebarItem = ({ item, isCartPage }) => {
+const CartRecapItem = ({ item, isCartPage }) => {
   const { allProduct } = useStaticQuery(
     graphql`
       query {
@@ -42,10 +42,12 @@ const SidebarItem = ({ item, isCartPage }) => {
 
   return (
     <Item key={item.id}>
-      <Img
-        fixed={productImage.node.localImage.childImageSharp.fixed}
-        alt={item.product.name}
-      />
+      {productImage && (
+        <Img
+          fixed={productImage.node.localImage.childImageSharp.fixed}
+          alt={item.product.name}
+        />
+      )}
       <div className="item-datas">
         <div className="item-name-delete">
           <span>{item.product.name}</span>
@@ -105,9 +107,9 @@ const SidebarItem = ({ item, isCartPage }) => {
   );
 };
 
-SidebarItem.propTypes = {
+CartRecapItem.propTypes = {
   isCartPage: PropTypes.bool,
   item: PropTypes.object.isRequired,
 };
 
-export default SidebarItem;
+export default CartRecapItem;

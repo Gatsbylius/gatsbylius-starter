@@ -1,19 +1,17 @@
 import styled from "styled-components";
-import Img from "gatsby-image";
+import Slider from "react-slick";
 import { color } from "helpers/themeHelpers";
 
 export const RelatedProductsStyled = styled.section`
   padding: 1rem;
 `;
 
-export const RelatedProductsItemTitle = styled.p`
-  margin: 1rem;
-  text-align: center;
-  color: ${color("black")};
-  font-weight: bold;
-`;
-
-export const RelatedProductsImage = styled(Img)`
-  margin: 0 1rem;
-  border: 2px solid ${color("black")};
+export const SliderStyled = styled(Slider)`
+  .slick-list {
+    padding: 2rem 1rem;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: ${color("black")};
+  }
 `;

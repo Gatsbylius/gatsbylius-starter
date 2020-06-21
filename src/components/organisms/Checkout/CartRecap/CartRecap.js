@@ -4,7 +4,7 @@ import _get from "lodash.get";
 import { getTotal, priceParser } from "helpers/cartHelper";
 import { navigate } from "gatsby";
 import {
-  SidebarContainer,
+  CartRecapContainer,
   ArticlesNumber,
   Title,
   HeadContainer,
@@ -13,15 +13,15 @@ import {
   ButtonContainer,
 } from "./styled";
 import { useStoreStateContext } from "context/StoreContext";
-import SidebarItem from "./SidebarItem";
+import CartRecapItem from "./CartRecapItem";
 import Button from "components/atoms/Button";
 
-const Sidebar = ({ isCartPage = false }) => {
+const CartRecap = ({ isCartPage = false }) => {
   const storeState = useStoreStateContext();
   const items = _get(storeState, "products", []);
 
   return (
-    <SidebarContainer>
+    <CartRecapContainer>
       <HeadContainer>
         <Title>Shopping Cart</Title>
         <ArticlesNumber>{items.length}</ArticlesNumber>
@@ -29,7 +29,7 @@ const Sidebar = ({ isCartPage = false }) => {
       <Divider />
       {items.map((item) => {
         return (
-          <SidebarItem key={item.id} item={item} isCartPage={isCartPage} />
+          <CartRecapItem key={item.id} item={item} isCartPage={isCartPage} />
         );
       })}
       <Divider />
@@ -42,12 +42,12 @@ const Sidebar = ({ isCartPage = false }) => {
           <Button onClick={() => navigate("/checkout")}>Go to checkout</Button>
         </ButtonContainer>
       )}
-    </SidebarContainer>
+    </CartRecapContainer>
   );
 };
 
-Sidebar.propTypes = {
+CartRecap.propTypes = {
   isCartPage: PropTypes.bool,
 };
 
-export default Sidebar;
+export default CartRecap;

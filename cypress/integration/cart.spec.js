@@ -39,7 +39,7 @@ describe("MiniCart", () => {
     cy.contains("21.98$").should("be.visible");
   });
 
-  it("User should be able to change quantity", () => {
+  it("User should be able to change quantity & see an informative message", () => {
     const increase = ".item-dec-inc > :nth-child(3) > svg";
     const decrease = ".item-dec-inc > :nth-child(1) > svg";
     const quantity = ".item-dec-inc > :nth-child(2)";
@@ -53,12 +53,14 @@ describe("MiniCart", () => {
 
     cy.get(increase).click();
     cy.get(quantity).should("contain", "2");
+    cy.contains("Successfully update quantity (2)").should("be.visible");
 
     cy.get(decrease).click();
     cy.get(quantity).should("contain", "1");
+    cy.contains("Successfully update quantity (1)").should("be.visible");
   });
 
-  it("User should be able to delete product from cart", () => {
+  it("User should be able to delete product from cart & see an informative message", () => {
     const deleteIcon = ".item-delete-icon";
 
     cy.visit("/product/car-lights-and-stars");
@@ -73,5 +75,6 @@ describe("MiniCart", () => {
 
     // Not fan of this selector
     cy.get(".item-name-delete span").should("not.exist");
+    cy.contains("Successfully removed from cart").should("be.visible");
   });
 });

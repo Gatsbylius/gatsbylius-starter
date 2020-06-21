@@ -11,7 +11,7 @@ import Layout from "components/layout";
 import CustomerInfoForm from "components/organisms/Checkout/CustomerInfoForm";
 import CustomerShipping from "components/organisms/Checkout/Shipping";
 import CustomerPayment from "components/organisms/Checkout/Payment";
-import Sidebar from "components/organisms/Checkout/Sidebar";
+import CartRecap from "components/organisms/Checkout/CartRecap";
 import { TabCustom, TabListWrapper } from "components/organisms/Checkout/Tab";
 import { mediaQuery } from "helpers/themeHelpers";
 
@@ -94,7 +94,7 @@ const Checkout = () => {
             </Tabs>
           </CheckoutStep>
           <CheckoutRecap>
-            <Sidebar />
+            <CartRecap />
           </CheckoutRecap>
         </CheckoutContainer>
       </Paper>

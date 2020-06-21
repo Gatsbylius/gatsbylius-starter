@@ -1,17 +1,38 @@
+const initCheckout = () => {
+  cy.visit("/product/car-lights-and-stars");
+  cy.contains("Add to cart").click();
+  // wait really added
+  cy.contains("Successfully added to cart").should("be.visible");
+  cy.visit("/cart");
+
+  cy.contains("Go to checkout").click();
+};
+
 describe("Checkout", () => {
   before(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
 
-  it("User can see success message at then end of the checkout", () => {
-    cy.visit("/product/car-lights-and-stars");
-    cy.contains("Add to cart").click();
-    // wait really added
-    cy.contains("Successfully added to cart").should("be.visible");
-    cy.visit("/cart");
+  it("User without cart cannot see checkout & see an error message", () => {
+    cy.visit("/checkout");
+    cy.contains("An error occured, you will be redirect to cart page.").should(
+      "be.visible"
+    );
 
-    cy.contains("Go to checkout").click();
+    cy.location("pathname").should("eq", "/cart");
+  });
+
+  it("User can go back on the checkout page", () => {
+    initCheckout();
+
+    cy.contains("Return to Shop").click();
+
+    cy.location("pathname").should("eq", "/");
+  });
+
+  it("User can see success message at then end of the checkout", () => {
+    initCheckout();
 
     cy.get("input[name=firstName]").type("FirstName");
     cy.get("input[name=lastName]").type("LastName");

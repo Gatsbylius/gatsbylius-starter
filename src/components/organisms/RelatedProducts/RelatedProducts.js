@@ -1,41 +1,26 @@
 import React from "react";
-import Slider from "react-slick";
-import { Link } from "gatsby";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  RelatedProductsStyled,
-  RelatedProductsItemTitle,
-  RelatedProductsImage,
-} from "./styled";
+import CardItem from "components/molecules/CardItem";
+import { SliderStyled, RelatedProductsStyled } from "./styled";
 
 const settings = {
-  dots: false,
-  infinite: false,
   speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   initialSlide: 0,
+  infinite: true,
+  dots: true,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2,
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 650,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -52,27 +37,23 @@ const RelatedProducts = ({ data }) => {
   return (
     <RelatedProductsStyled>
       <h4>Similar Products</h4>
-      <Slider {...settings}>
+      <SliderStyled {...settings}>
         {data.category.products
           .filter((product) => data.product.name !== product.name)
           .map((product) => {
             return (
-              <Link to={`/product/${product.slug}`} key={product.slug}>
-                {product.localImage && (
-                  <RelatedProductsImage
-                    sizes={{
-                      ...product.localImage.childImageSharp.fluid,
-                      aspectRatio: 2 / 2,
-                    }}
-                  />
-                )}
-                <RelatedProductsItemTitle>
-                  {product.name}
-                </RelatedProductsItemTitle>
-              </Link>
+              <CardItem
+                key={product.id}
+                to={`/product/${product.slug}`}
+                imageFluid={
+                  product.thumbnail && product.thumbnail.childImageSharp.fluid
+                }
+                name={product.name}
+                price={product.variants[0].price}
+              />
             );
           })}
-      </Slider>
+      </SliderStyled>
     </RelatedProductsStyled>
   );
 };

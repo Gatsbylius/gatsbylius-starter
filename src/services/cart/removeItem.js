@@ -1,4 +1,7 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import { toastConfig } from "helpers/themeHelpers";
+
 const SYLIUS_URL = process.env.GATSBY_SYLIUS_URL;
 
 export const removeItemFromCart = async (itemId, storeState, storeDispatch) => {
@@ -11,7 +14,7 @@ export const removeItemFromCart = async (itemId, storeState, storeDispatch) => {
   await axios
     .delete(`${SYLIUS_URL}/shop-api/carts/${cartKey}/items/${itemId}`)
     .then(async (response) => {
-      //@todo: update totals ?
+      toast.success(`Successfully removed from cart`, toastConfig);
       storeDispatch({
         type: "updateProductsSuccess",
         payload: response.data.items,
@@ -19,6 +22,7 @@ export const removeItemFromCart = async (itemId, storeState, storeDispatch) => {
       storeDispatch({ type: "updateStep", payload: "shopping" });
     })
     .catch((error) => {
+      toast.error(`Was not added removed from cart, error.`, toastConfig);
       storeDispatch({
         type: "updateProductsError",
         payload: error.message,

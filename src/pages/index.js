@@ -87,7 +87,7 @@ export const query = graphql`
         ...CategoryInfos
         thumbnail: localImage {
           childImageSharp {
-            fluid(maxHeight: 250, quality: 50) {
+            fluid(maxWidth: 250, maxHeight: 250) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -106,7 +106,7 @@ export const query = graphql`
         }
         localImage {
           childImageSharp {
-            fluid(maxHeight: 250, quality: 50) {
+            fluid(maxWidth: 250, maxHeight: 250) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

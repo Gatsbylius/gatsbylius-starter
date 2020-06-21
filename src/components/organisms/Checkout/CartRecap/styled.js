@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { color, spacing } from "helpers/themeHelpers";
 
-export const SidebarContainer = styled.div`
+export const CartRecapContainer = styled.section`
   background-color: #f8fafb;
   border-color: solid 1px #979797;
   padding: ${spacing(["xl", "lg"])};

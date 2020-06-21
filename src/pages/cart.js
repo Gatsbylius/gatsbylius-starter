@@ -1,11 +1,11 @@
 import React from "react";
-import Sidebar from "components/organisms/Checkout/Sidebar";
+import CartRecap from "components/organisms/Checkout/CartRecap";
 import Layout from "components/layout";
 
 const Cart = () => {
   return (
     <Layout>
-      <Sidebar isCartPage />
+      <CartRecap isCartPage />
     </Layout>
   );
 };

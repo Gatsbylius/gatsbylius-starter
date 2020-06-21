@@ -7,6 +7,9 @@ export const initCheckout = async (storeState, checkoutDispatch) => {
     await axios
       .get(`${SYLIUS_URL}/shop-api/checkout/${storeState.cartKey}`, {})
       .then((response) => {
+        if (response.data.totals.total === 0) {
+          throw new Error("Checkout is empty.");
+        }
         checkoutDispatch({
           type: "updateOrderSummary",
           payload: {
@@ -19,9 +22,6 @@ export const initCheckout = async (storeState, checkoutDispatch) => {
             currency: response.currency,
           },
         });
-      })
-      .catch((error) => {
-        console.error("Error on cart creation ", error);
       });
   }
 };

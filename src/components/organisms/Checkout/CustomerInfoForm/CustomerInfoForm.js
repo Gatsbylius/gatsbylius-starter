@@ -1,5 +1,8 @@
 import React from "react";
+import { navigate } from "gatsby";
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { toastConfig } from "helpers/themeHelpers";
 import Section from "components/molecules/Section";
 import InputText from "components/atoms/Form/Input/InputText";
 import InputSelect from "components/atoms/Form/Input/InputSelect";
@@ -18,6 +21,8 @@ import {
 } from "context/StoreContext";
 import { initCheckout } from "services/checkout/initCheckout";
 
+let errorIsDisplay = false;
+
 const CustomerInfoForm = () => {
   const storeState = useStoreStateContext();
   const storeDispatch = useStoreDispatchContext();
@@ -27,10 +32,34 @@ const CustomerInfoForm = () => {
     checkoutState.customerInfos
   );
 
-  if (storeState.step !== "CustomerInfoForm") {
-    initCheckout(storeState, checkoutDispatch).then(() => {
-      storeDispatch({ type: "updateStep", payload: "CustomerInfoForm" });
-    });
+  // @TODO : find a way to be react-hooks/exhaustive-deps compliant
+  React.useEffect(() => {
+    initCheckout(storeState, checkoutDispatch)
+      .then(() => {
+        storeDispatch({ type: "updateStep", payload: "CustomerInfoForm" });
+      })
+      .catch(() => {
+        storeDispatch({ type: "clearCart" });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!storeState.cartKey) {
+    if (!errorIsDisplay) {
+      toast.error(
+        "An error occured, you will be redirect to cart page.",
+        toastConfig
+      );
+    }
+    errorIsDisplay = true;
+    setTimeout(() => {
+      navigate("/cart");
+    }, 1500);
+    return null;
+  }
+
+  if (!storeState.step) {
+    return "loading...";
   }
 
   const handleChange = (e) => {
@@ -91,8 +120,11 @@ const CustomerInfoForm = () => {
         />
       </FormGroup>
       <FormAction>
-        <IconButton icon={FaArrowLeft}>Return to Shop</IconButton>
+        <IconButton onClick={() => navigate("/")} icon={FaArrowLeft}>
+          Return to Shop
+        </IconButton>
         <Button
+          disabled={!storeState.step}
           type="submit"
           onClick={() => {
             checkoutDispatch({
